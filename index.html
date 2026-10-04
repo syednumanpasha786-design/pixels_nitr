@@ -1,0 +1,1717 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#FAF7F2" />
+<title>PIXELS 2k26 · Navodaya Institute of Technology</title>
+<meta name="description" content="PIXELS 2k26 — the intra-college fest of Navodaya Institute of Technology, Raichur. 35+ events, 4 teams, one month of pure energy." />
+<link rel="icon" href="https://media.base44.com/images/public/6ac190b2672265dcfbb64804/d312e3b0f_pixels.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+<script>
+  /* Light is the default theme; dark uses the intro's exact palette. */
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ivory: 'rgb(var(--rgb-cream) / <alpha-value>)',
+          navy: 'rgb(var(--rgb-text) / <alpha-value>)',
+          ink: 'rgb(var(--rgb-text) / <alpha-value>)',
+          mutedink: 'rgb(var(--rgb-soft) / <alpha-value>)',
+          gold: 'rgb(var(--rgb-gold) / <alpha-value>)',
+          goldsoft: 'rgb(var(--rgb-goldlight) / <alpha-value>)',
+          golddark: 'rgb(var(--rgb-golddark) / <alpha-value>)',
+          softline: 'rgb(var(--rgb-line) / <alpha-value>)',
+          panel: 'rgb(var(--rgb-panel) / <alpha-value>)',
+          onpanel: 'rgb(var(--rgb-onpanel) / <alpha-value>)',
+          white: 'rgb(var(--rgb-surface) / <alpha-value>)'
+        },
+        fontFamily: { serif: ['"EB Garamond"', 'ui-serif', 'Georgia', 'serif'] }
+      }
+    }
+  };
+</script>
+<style>
+/* ============================ THEME TOKENS ================================
+   Values come straight from pixelintro.html: :root is the light theme and
+   body.theme-dark is the dark theme. The RGB channels keep Tailwind's opacity
+   modifiers (bg-white/75, text-navy/70 …) working in both themes.
+   ========================================================================= */
+:root{
+  --px-gold:#C5A059;--px-gold-light:#D9BE7E;--px-gold-dark:#947239;
+  --px-navy:#0F172A;--px-navy-2:#1E3A8A;
+  --px-cream:#FDFBF7;--px-bg-2:#F7F3EA;--px-surface:#FFFFFF;
+  --px-text:#171717;--px-text-soft:#414141;--px-accent-blue:#1E3A8A;
+  --px-like-bg:rgba(253,251,247,.95);--px-video-bg:#000;
+  --px-title-3d:0 1px 1px rgba(0,0,0,.15);
+  --rgb-cream:253 251 247;--rgb-surface:255 255 255;--rgb-text:23 23 23;--rgb-soft:65 65 65;
+  --rgb-gold:197 160 89;--rgb-goldlight:217 190 126;--rgb-golddark:148 114 57;
+  --rgb-line:231 223 210;--rgb-panel:29 35 49;--rgb-onpanel:250 247 242;
+}
+body.theme-dark{
+  --px-cream:#000;--px-bg-2:#000;--px-surface:#141414;
+  --px-text:#F5F1E8;--px-text-soft:#D8D3C9;--px-accent-blue:#B4C4F1;
+  --px-gold-dark:#D9BE7E;--px-like-bg:rgba(20,20,20,.95);
+  --px-title-3d:0 1px 1px rgba(0,0,0,.4);
+  --rgb-cream:0 0 0;--rgb-surface:20 20 20;--rgb-text:245 241 232;--rgb-soft:216 211 201;
+  --rgb-gold:217 190 126;--rgb-goldlight:232 209 155;--rgb-golddark:217 190 126;
+  --rgb-line:40 40 40;--rgb-panel:20 20 20;--rgb-onpanel:245 241 232;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body,button{font-family:'EB Garamond',Georgia,serif;font-weight:600;letter-spacing:.01em}
+body{overflow-x:hidden;background:var(--px-cream);color:var(--px-text);transition:background .25s,color .25s}
+html{font-size:17px}
+h1,h2,h3,h4,h5{font-family:'EB Garamond',ui-serif,Georgia,serif;text-shadow:var(--px-title-3d)}
+button{line-height:1.2;cursor:pointer}
+button:focus-visible{outline:2px solid var(--px-text);outline-offset:4px}
+.hidden{display:none!important}
+/* Uniform letter spacing across every text block — no stretched letters */
+[class*="tracking-"]{letter-spacing:.015em!important}
+.num{font-variant-numeric:tabular-nums}
+.gold-text{background:linear-gradient(100deg,#BF8E4B 0%,#E0B877 45%,#A97A3C 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.theme-dark .gold-text{background:linear-gradient(100deg,#D9BE7E 0%,#F0DCA9 45%,#C5A059 100%);-webkit-background-clip:text;background-clip:text}
+.glass-card{background:linear-gradient(150deg,rgba(255,255,255,.92),rgba(250,247,242,.86));backdrop-filter:blur(14px);border:1px solid rgba(191,142,75,.22);box-shadow:0 18px 45px -28px rgba(29,35,49,.35)}
+body.theme-dark .glass-card{background:linear-gradient(150deg,rgba(20,20,20,.92),rgba(10,10,10,.86));border-color:rgba(217,190,126,.28)}
+.scroll-hide::-webkit-scrollbar{display:none}
+.scroll-hide{scrollbar-width:none}
+@keyframes marquee-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-track{animation:marquee-x 60s linear infinite;will-change:transform}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes float-soft{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.float-soft{animation:float-soft 6s ease-in-out infinite}
+
+/* ======================= INTRO PAGE (verbatim) ========================== */
+.top-controls{position:fixed;top:24px;right:24px;z-index:999;display:flex;align-items:center;gap:12px;opacity:1;pointer-events:auto}
+.skip-btn{padding:10px 20px;background:var(--px-surface);border:1px solid var(--px-gold);border-radius:100px;color:var(--px-text);font-size:1.05rem;display:inline-flex;align-items:center;gap:8px;opacity:1}
+.skip-btn svg{width:16px;height:16px;flex:none}
+.theme-toggle{width:42px;height:42px;flex:none;border-radius:50%;background:var(--px-surface);border:1px solid var(--px-gold);display:inline-flex;align-items:center;justify-content:center;color:var(--px-text)}
+.theme-toggle svg{width:19px;height:19px}
+.theme-toggle .icon-moon{display:none}
+body.theme-dark .theme-toggle .icon-moon{display:block}
+body.theme-dark .theme-toggle .icon-sun{display:none}
+#intro-screen{position:fixed;inset:0;z-index:9000;background:var(--px-cream)}
+.bg-decoration{position:fixed;inset:0;pointer-events:none;z-index:0;background:var(--px-cream)}
+.viewport{perspective:1000px;perspective-origin:50% 45%;height:100vh;width:100%;position:relative;overflow:hidden;z-index:1}
+#gallery,#showcase-container{position:absolute;inset:0;transform-style:preserve-3d}
+#showcase-container{z-index:10}
+.px-card{position:absolute;top:50%;left:50%;width:130px;height:185px;margin-top:-92px;margin-left:-65px;padding:3px;background:#fff;border-radius:10px;overflow:hidden;transform-style:preserve-3d;backface-visibility:hidden;will-change:transform,opacity;opacity:0}
+.px-card img{width:100%;height:100%;object-fit:cover;border-radius:7px;display:block}
+.showcase-card{position:absolute;top:50%;left:50%;width:240px;height:339px;margin-top:-169px;margin-left:-120px;padding:8px;background:var(--px-surface);border-radius:18px;overflow:hidden;backface-visibility:hidden;border:1px solid var(--px-gold);opacity:0;z-index:10;will-change:transform,opacity}
+.showcase-card img{width:100%;height:100%;object-fit:cover;border-radius:6px;display:block}
+.showcase-logo-card{position:absolute;top:50%;left:50%;width:180px;height:180px;margin-top:-90px;margin-left:-90px;opacity:0;z-index:10;will-change:transform,opacity}
+.showcase-logo-circle{width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;border:3px solid var(--px-gold);overflow:hidden;background:var(--px-surface)}
+.showcase-logo-circle img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.showcase-text{position:absolute;top:max(100px,12%);left:50%;transform:translateX(-50%);width:85%;font-size:1.7rem;color:var(--px-text);text-align:center;z-index:15;opacity:0;line-height:1.35;text-shadow:var(--px-title-3d)}
+.showcase-text .accent,.hero-title .accent{color:var(--px-gold)}
+.logo-center{position:absolute;top:50%;left:50%;z-index:5;opacity:0}
+.logo-circle{width:75px;height:75px;border-radius:50%;background:var(--px-surface);display:flex;align-items:center;justify-content:center;border:2px solid var(--px-gold);overflow:hidden;position:relative;z-index:5}
+.logo-circle img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.logo-ring{position:absolute;top:50%;left:50%;border-radius:50%;pointer-events:none}
+.logo-ring-1{width:95px;height:95px;border:2px dashed var(--px-gold)}
+.logo-ring-2{width:115px;height:115px;border:1px solid var(--px-gold)}
+.logo-ring-3{width:135px;height:135px;border:1px dotted var(--px-gold)}
+.phase-text{position:absolute;bottom:55px;left:50%;transform:translateX(-50%);width:90%;font-size:1rem;color:var(--px-text-soft);letter-spacing:.03em;text-transform:uppercase;text-align:center;z-index:20;opacity:0}
+.progress-container{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:180px;height:2px;background:var(--px-surface);overflow:hidden;z-index:20}
+.progress-fill{height:100%;width:0%;background:var(--px-gold)}
+.hero-stage{position:fixed;inset:0;z-index:100;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,430px);grid-template-rows:auto auto;grid-template-areas:"content video" "campaign video";align-content:safe center;justify-content:center;column-gap:clamp(32px,5vw,72px);row-gap:32px;padding:88px clamp(24px,6vw,80px) 48px;overflow-y:auto;overflow-x:hidden;background:var(--px-cream);opacity:0;pointer-events:none}
+.hero-content{grid-area:content;display:flex;flex-direction:column;align-items:center;max-width:680px;justify-self:center;width:100%;text-align:center}
+.hero-title{font-size:clamp(3rem,5.8vw,5rem);color:var(--px-text);margin-bottom:12px;opacity:0;line-height:1.1;text-shadow:var(--px-title-3d)}
+.hero-tagline{font-style:italic;font-size:1.6rem;color:var(--px-gold-dark);margin-bottom:26px;opacity:0;line-height:1.35}
+.typing-container{min-height:96px;display:flex;align-items:flex-start;justify-content:center;max-width:640px}
+.typing-text{font-size:1.3rem;color:var(--px-text-soft);text-align:center;line-height:1.55;opacity:0}
+.typing-text.typing::after{content:'|';color:var(--px-gold);animation:blink .7s infinite;margin-left:1px}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.hero-badge{margin-top:24px;padding:9px 24px;background:var(--px-surface);border:1px solid var(--px-gold);border-radius:100px;font-size:1rem;color:var(--px-gold-dark);letter-spacing:.03em;opacity:0;text-transform:uppercase}
+.enter-btn{margin-top:28px;padding:17px 36px;background:var(--px-gold-light);color:var(--px-navy);border:1px solid var(--px-gold);border-radius:14px;font-size:1.25rem;display:inline-flex;align-items:center;gap:12px;opacity:0;pointer-events:auto}
+.enter-btn svg{width:20px;height:20px;flex:none}
+.campaign-footnote{grid-area:campaign;max-width:720px;width:100%;text-align:center;font-size:1.15rem;color:var(--px-text);line-height:1.55;opacity:0;padding:20px 26px;background:var(--px-surface);border:1px solid var(--px-gold);border-radius:16px;justify-self:center}
+.campaign-footnote strong{color:var(--px-accent-blue);font-weight:600}
+.campaign-footnote .vote{color:var(--px-gold-dark);font-weight:600}
+.hero-video-card{grid-area:video;position:relative;align-self:center;justify-self:center;width:min(340px,84vw);padding:10px;background:var(--px-surface);border-radius:18px;overflow:hidden;opacity:0;border:2px solid var(--px-gold)}
+.hero-video-card video{width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;border-radius:10px;display:block;background:var(--px-video-bg)}
+.like-btn{position:absolute;right:16px;bottom:16px;z-index:5;display:inline-flex;align-items:center;gap:7px;padding:8px 14px;background:var(--px-like-bg);border:1px solid var(--px-gold);border-radius:100px;color:var(--px-text);font-size:1rem}
+.like-btn svg{width:17px;height:17px;stroke:var(--px-gold-dark);fill:none}
+.like-btn.liked svg{fill:var(--px-gold);stroke:var(--px-gold-dark)}
+.hero-scroll-btn{grid-area:scroll;display:none;flex:none;align-self:center;justify-self:center;width:46px;height:46px;min-width:46px;min-height:46px;padding:0;border-radius:50%;border:1px solid var(--px-gold);background:var(--px-surface);align-items:center;justify-content:center;color:var(--px-gold-dark);animation:scrollNudge 1.6s ease-in-out infinite}
+.hero-scroll-btn svg{width:20px;height:20px;flex:none}
+@keyframes scrollNudge{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(max-width:900px){
+  .top-controls{top:16px;right:16px}
+  .skip-btn{padding:8px 16px;font-size:1rem}
+  .theme-toggle{width:38px;height:38px}
+  .px-card{width:95px;height:135px;margin-top:-67px;margin-left:-47px}
+  .showcase-card{width:210px;height:297px;margin-top:-148px;margin-left:-105px}
+  .showcase-logo-card{width:150px;height:150px;margin-top:-75px;margin-left:-75px}
+  .showcase-text{font-size:1.25rem;top:max(96px,16%);width:88%}
+  .hero-stage{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:36px;padding:88px 20px max(48px,env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch}
+  .hero-stage>*{flex-shrink:0}
+  .hero-content{max-width:100%}
+  .hero-title{font-size:3rem}
+  .hero-tagline{font-size:1.4rem;margin-bottom:22px}
+  .typing-container{min-height:0;width:100%}
+  .typing-text{font-size:1.2rem;line-height:1.6}
+  .hero-badge{font-size:.95rem;padding:8px 16px}
+  .enter-btn{font-size:1.2rem;padding:15px 26px;margin-top:24px}
+  .hero-scroll-btn{display:inline-flex}
+  .hero-video-card{width:80%;max-width:380px;aspect-ratio:9/16;flex:none;padding:0;border:0;background:transparent;border-radius:18px;order:0}
+  .hero-video-card video{width:100%;height:100%;aspect-ratio:9/16;object-fit:contain;border-radius:18px}
+  .campaign-footnote{font-size:1.1rem;padding:20px;max-width:480px}
+  #intro-screen{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+  .viewport{perspective:600px;height:100svh;min-height:540px}
+  .progress-container{width:140px;bottom:max(24px,env(safe-area-inset-bottom))}
+  .phase-text{font-size:.95rem;bottom:calc(48px + env(safe-area-inset-bottom));line-height:1.35}
+  .hero-stage{height:100%;height:100dvh}
+}
+@media (prefers-reduced-motion: reduce){.marquee-track,.float-soft{animation:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+/* ============================================================================
+   PIXELS 2k26 — complete single-file application
+   HTML5 + Tailwind (CDN) + CSS3 + vanilla JS. No build step.
+   The animated intro page (ported verbatim from pixelintro.html) plays first;
+   the Enter PIXELS 2k26 button reveals the landing page.
+
+   ---------------------------------------------------------------------------
+   FIREBASE / SUPABASE
+   ---------------------------------------------------------------------------
+   Everything reads and writes through `DB`, which delegates to `adapter`.
+   Only four methods are needed, each returning objects with an `id`:
+
+       adapter.list(collection)                -> Promise<Array>
+       adapter.create(collection, data)        -> Promise<Object>
+       adapter.update(collection, id, patch)   -> Promise<Object>
+       adapter.remove(collection, id)          -> Promise<void>
+
+   Collections: teams, categories, events, members, registrations, results,
+                announcements, posts, config
+
+   Supabase example:
+       const supabase = window.supabase.createClient(URL, ANON_KEY);
+       const SupabaseAdapter = {
+         async list(c)              { const { data } = await supabase.from(c).select('*'); return data || []; },
+         async create(c, d)         { const { data } = await supabase.from(c).insert(d).select().single(); return data; },
+         async update(c, id, patch) { const { data } = await supabase.from(c).update(patch).eq('id', id).select().single(); return data; },
+         async remove(c, id)        { await supabase.from(c).delete().eq('id', id); }
+       };
+
+   Firestore example:
+       const FirestoreAdapter = {
+         async list(c)              { const s = await getDocs(collection(db, c)); return s.docs.map(d => ({ id: d.id, ...d.data() })); },
+         async create(c, d)         { const r = await addDoc(collection(db, c), d); return { id: r.id, ...d }; },
+         async update(c, id, patch) { await updateDoc(doc(db, c, id), patch); return { id, ...patch }; },
+         async remove(c, id)        { await deleteDoc(doc(db, c, id)); }
+       };
+
+   Then set:  const adapter = SupabaseAdapter;      // (or FirestoreAdapter)
+
+   File uploads go through `uploader` — swap it for Firebase/Supabase Storage:
+       const SupabaseStorage = {
+         async upload(file) {
+           const path = 'pixels/' + Date.now() + '-' + file.name;
+           await supabase.storage.from('pixels').upload(path, file);
+           return supabase.storage.from('pixels').getPublicUrl(path).data.publicUrl;
+         }
+       };
+   ========================================================================== */
+
+/* ============================== 1. ASSETS ================================= */
+const A = {
+  logo:      'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/d312e3b0f_pixels.png',
+  college:   'https://media.base44.com/images/public/user_695a0eedac0f335ac1c4d2a0/3713e7da6_image.png',
+  revan:     'https://media.base44.com/images/public/user_695a0eedac0f335ac1c4d2a0/0c82acc04_image.png',
+  heroVideo: 'https://media.base44.com/videos/public/6ac190b2672265dcfbb64804/4f190a11f_WhatsAppVideo2026-10-04at10716PM.mp4',
+  filmVideo: 'https://media.base44.com/videos/public/6ac190b2672265dcfbb64804/094929de1_WhatsAppVideo2026-10-04at83144PM.mp4',
+  ctaVideo:  'https://media.base44.com/videos/public/user_695a0eedac0f335ac1c4d2a0/880199ba6_WhatsAppVideo2026-10-04at40724AM.mp4',
+  cream:     'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/4e1664d52_image.png',
+  cricket:   'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/bfb8dc0ec_image.png',
+  bgmi:      'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/59e54847b_image.png',
+  festival:  'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/006fbb18a_image.png',
+  ai:        'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/4fd65a637_image.png',
+  leaderboard:'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/ca5daebd1_image.png',
+  lock:      'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/52b0a02c5_image.png',
+  howCard:   'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/c1c5445a0_image.png',
+  hackathon: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80',
+  memories:  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80',
+  live:      'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=900&q=80',
+  campus:    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80',
+  sports:    'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=900&q=80'
+};
+const LINKEDIN = 'https://www.linkedin.com/in/syed-numan-pasha-114b212bb?utm_source=share_via&utm_content=profile&utm_medium=member_android';
+const EVENT_QUOTA = '35+';
+const TOTAL_POINTS = 1200;
+const APP_URL = 'pixels-event-flow.base44.app';
+/* Set this to the PIXELS 2k26 .apk link once the Android build is ready — the
+   install button then downloads the app instead of using the browser prompt. */
+const APK_URL = '';
+
+/* ========================= 2. DATABASE ADAPTER ============================ */
+const KEYS = { db: 'pixel2k26_db', admin: 'pixel2k26_admin', captain: 'pixel2k26_captain', student: 'pixel2k26_student', theme: 'pixels2k26_theme', intro: 'pixels2k26_intro_entered' };
+const COLLECTIONS = ['teams','categories','events','members','registrations','results','announcements','posts','config'];
+
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+const readRaw = () => { try { return JSON.parse(localStorage.getItem(KEYS.db) || '{}'); } catch { return {}; } };
+
+const LocalAdapter = {
+  async list(c) { return (readRaw()[c] || []).slice(); },
+  async create(c, data) {
+    const all = readRaw(); all[c] = all[c] || [];
+    const row = { id: uid(), created_date: new Date().toISOString(), ...data };
+    all[c].push(row); localStorage.setItem(KEYS.db, JSON.stringify(all)); return row;
+  },
+  async update(c, id, patch) {
+    const all = readRaw(); all[c] = all[c] || [];
+    const i = all[c].findIndex(r => r.id === id);
+    if (i < 0) return null;
+    all[c][i] = { ...all[c][i], ...patch, id };
+    localStorage.setItem(KEYS.db, JSON.stringify(all)); return all[c][i];
+  },
+  async remove(c, id) {
+    const all = readRaw(); all[c] = (all[c] || []).filter(r => r.id !== id);
+    localStorage.setItem(KEYS.db, JSON.stringify(all));
+  }
+};
+
+/* Swap this single line to move the whole app onto Firebase/Supabase. */
+const adapter = LocalAdapter;
+
+const DB = {
+  list: (c) => adapter.list(c),
+  create: (c, d) => adapter.create(c, d),
+  update: (c, id, p) => adapter.update(c, id, p),
+  remove: (c, id) => adapter.remove(c, id),
+  async all() {
+    const pairs = await Promise.all(COLLECTIONS.map(c => DB.list(c)));
+    const out = {}; COLLECTIONS.forEach((c, i) => { out[c] = pairs[i]; }); return out;
+  }
+};
+
+/* Uploads: default keeps the picture inside the browser. Replace with the
+   SupabaseStorage / Firebase Storage snippet above for real object storage. */
+const uploader = {
+  async upload(file) {
+    return new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onload = () => resolve(fr.result);
+      fr.onerror = reject;
+      fr.readAsDataURL(file);
+    });
+  }
+};
+
+/* ============================ 3. SEED DATA =============================== */
+async function seed() {
+  const all = readRaw();
+  if (all.__seeded) return;
+  const teams = [
+    { id: uid(), name: 'Achilles', slug: 'achilles', motto: 'Strike first, strike hardest', color: '#BF8E4B', captain_name: '', vice_captain_name: '', captain_password: 'ACH-7K2M', total_points: 0, order_index: 0 },
+    { id: uid(), name: 'Hercules', slug: 'hercules', motto: 'Strength in every entry', color: '#1D2331', captain_name: '', vice_captain_name: '', captain_password: 'HER-4P9Q', total_points: 0, order_index: 1 },
+    { id: uid(), name: 'Orpheus', slug: 'orpheus', motto: 'Music, mind and midnight stages', color: '#C98F3C', captain_name: '', vice_captain_name: '', captain_password: 'ORP-2T5X', total_points: 0, order_index: 2 },
+    { id: uid(), name: 'Atlas', slug: 'atlas', motto: 'We carry the scoreboard', color: '#4A5568', captain_name: '', vice_captain_name: '', captain_password: 'ATL-8N3R', total_points: 0, order_index: 3 }
+  ];
+  const categories = [
+    { name: 'Technical Events', slug: 'technical-events', icon: '⚙️' },
+    { name: 'Sports', slug: 'sports', icon: '🏆' },
+    { name: 'E-Sports', slug: 'e-sports', icon: '🎮' },
+    { name: 'Indoor Games', slug: 'indoor-games', icon: '♟️' },
+    { name: 'Cultural Events', slug: 'cultural-events', icon: '🎭' },
+    { name: 'Other Events', slug: 'other-events', icon: '✨' }
+  ].map((c, i) => ({ id: uid(), order_index: i, ...c }));
+
+  all.teams = teams; all.categories = categories;
+  all.events = []; all.members = []; all.registrations = []; all.results = [];
+  all.announcements = []; all.posts = [];
+  all.config = [{
+    id: uid(), key: 'global', admin_password: 'revan2k26',
+    event_name: 'PIXELS 2k26', college_name: 'Navodaya Institute of Technology',
+    location: 'Raichur, Karnataka', tagline: 'Where every pixel becomes a memory',
+    intro: 'The intra-college fest of Navodaya Institute of Technology, Raichur — 35+ events across technical, sports, e-sports, indoor, cultural and open arenas, fought out by four teams over one unforgettable month.',
+    campaign_name: 'Revan Siddheshwar', campaign_title: 'Vote Revan — President, PIXELS 2k26',
+    campaign_message: 'Vote for Revan Siddheshwar to make PIXELS 2k26 bigger, grander and more memorable than ever before — more events, better arenas, louder nights and memories that outlast the month.'
+  }];
+  all.__seeded = true;
+  localStorage.setItem(KEYS.db, JSON.stringify(all));
+}
+
+/* ============================== 4. HELPERS =============================== */
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (m) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+const num = (v) => Number(v || 0);
+const norm = (v) => String(v || '').trim().toUpperCase();
+const state = { data: null, route: [], flash: '' };
+
+const config = () => (state.data.config[0] || {});
+const teamByName = (n) => state.data.teams.find(t => norm(t.name) === norm(n));
+const eventByName = (n) => state.data.events.find(e => e.name === n);
+const resultByEvent = (n) => state.data.results.find(r => r.event_name === n);
+
+function standings() {
+  const pts = {};
+  state.data.teams.forEach(t => { pts[t.name] = num(t.total_points); });
+  const ranked = state.data.teams.map(t => ({ ...t, points: pts[t.name] || 0 })).sort((a, b) => b.points - a.points);
+  ranked.forEach((t, i) => { t.rank = i + 1; });
+  return ranked;
+}
+function pointsPossible() { return state.data.events.reduce((s, e) => s + num(e.points), 0); }
+function isAdmin() { return localStorage.getItem(KEYS.admin) === '1'; }
+function captainTeam() { return localStorage.getItem(KEYS.captain) || ''; }
+function isDark() { return document.body.classList.contains('theme-dark'); }
+function student() { try { return JSON.parse(localStorage.getItem(KEYS.student) || 'null') || { name:'', usn:'', team:'' }; } catch { return { name:'', usn:'', team:'' }; } }
+const statusPill = (s) => ({
+  live: 'bg-red-500/15 text-red-500', upcoming: 'bg-gold/20 text-golddark', completed: 'bg-navy/10 text-navy/70',
+  registered: 'bg-gold/20 text-golddark', confirmed: 'bg-navy/10 text-navy/70', waitlist: 'bg-navy/10 text-navy/60'
+}[s] || 'bg-navy/10 text-navy/60');
+
+const B = 'inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[14px] font-semibold transition';
+const BTN = {
+  dark: B + ' bg-panel text-onpanel hover:scale-[1.03]',
+  gold: B + ' bg-gradient-to-r from-gold to-goldsoft text-panel hover:scale-[1.03]',
+  ghost: B + ' border border-navy/20 text-navy hover:border-gold hover:text-gold',
+  danger: B + ' border border-red-500/40 text-red-500 hover:bg-red-500/10'
+};
+const chip = (text, active) => '<button type="button" data-action="filter" data-value="' + esc(text) + '" class="rounded-full px-4 py-2 text-[13px] font-semibold transition ' +
+  (active ? 'bg-panel text-onpanel' : 'border border-softline text-navy/70') + '">' + esc(text) + '</button>';
+
+const card = (inner, cls) => '<div class="rounded-[1.6rem] border border-softline bg-white/75 p-6 ' + (cls || '') + '">' + inner + '</div>';
+const section = (eyebrow, title, subtitle) =>
+  '<div class="max-w-3xl"><span class="text-[12px] font-bold uppercase text-gold">' + esc(eyebrow) + '</span>' +
+  '<h2 class="mt-3 text-3xl font-black leading-tight text-navy sm:text-4xl">' + esc(title) + '</h2>' +
+  (subtitle ? '<p class="mt-3 text-[16px] leading-relaxed text-mutedink">' + esc(subtitle) + '</p>' : '') + '</div>';
+const empty = (title, text) => '<div class="rounded-[1.4rem] border border-dashed border-softline bg-white/60 px-6 py-10 text-center">' +
+  '<p class="text-[16px] font-bold text-navy">' + esc(title) + '</p>' +
+  '<p class="mx-auto mt-2 max-w-md text-[14px] leading-relaxed text-mutedink">' + esc(text) + '</p></div>';
+const tile = (label, value, accent) => '<div class="rounded-2xl border border-softline bg-white/75 p-5">' +
+  '<p class="text-[12px] font-semibold uppercase text-mutedink">' + esc(label) + '</p>' +
+  '<p class="num mt-3 text-3xl font-black ' + (accent ? 'text-gold' : 'text-navy') + '">' + esc(value) + '</p></div>';
+const field = (label, name, type, value, ph, req) => '<div><label class="text-[12px] font-semibold uppercase text-mutedink">' + label + '</label>' +
+  '<input name="' + name + '" type="' + type + '" value="' + esc(value) + '" placeholder="' + esc(ph || '') + '" ' + (req ? 'required' : '') +
+  ' class="mt-2 h-11 w-full rounded-md border border-softline bg-white px-3 text-[15px] text-navy" /></div>';
+const selectField = (label, name, options, value, ph, req) => '<div><label class="text-[12px] font-semibold uppercase text-mutedink">' + label + '</label>' +
+  '<select name="' + name + '" ' + (req ? 'required' : '') + ' class="mt-2 h-11 w-full rounded-md border border-softline bg-white px-3 text-[15px] text-navy">' +
+  '<option value="">' + esc(ph || 'Select') + '</option>' +
+  options.map(o => '<option value="' + esc(o) + '"' + (norm(o) === norm(value) ? ' selected' : '') + '>' + esc(o) + '</option>').join('') + '</select></div>';
+const areaField = (label, name, value, ph, cls) => '<div class="' + (cls || '') + '"><label class="text-[12px] font-semibold uppercase text-mutedink">' + label + '</label>' +
+  '<textarea name="' + name + '" rows="3" placeholder="' + esc(ph || '') + '" class="mt-2 w-full rounded-md border border-softline bg-white px-3 py-2 text-[15px] text-navy">' + esc(value || '') + '</textarea></div>';
+
+/* Outline icons for the mobile bottom bar + theme toggle */
+const ICONS = {
+  home:   '<path d="M3 10.6 12 3.4l9 7.2"/><path d="M5.6 9.6V20h12.8V9.6"/>',
+  dash:   '<rect x="3.2" y="3.2" width="7.2" height="7.6" rx="1.6"/><rect x="13.6" y="3.2" width="7.2" height="5" rx="1.6"/><rect x="3.2" y="13.8" width="7.2" height="7" rx="1.6"/><rect x="13.6" y="11" width="7.2" height="9.8" rx="1.6"/>',
+  cal:    '<rect x="3.2" y="5" width="17.6" height="15.8" rx="2.2"/><path d="M3.2 10h17.6M8 3v4M16 3v4"/>',
+  users:  '<circle cx="9.2" cy="8.2" r="3.4"/><path d="M3 20c0-3.4 2.8-5.6 6.2-5.6s6.2 2.2 6.2 5.6"/><path d="M16.4 8.6a3 3 0 1 0 0-5.2"/>',
+  img:    '<rect x="3.2" y="4" width="17.6" height="16" rx="2.2"/><circle cx="9" cy="10" r="1.7"/><path d="M4.4 18.2 9.6 13l4 4 3.2-3.2 4 4"/>',
+  rss:    '<circle cx="5.4" cy="18.6" r="1.4"/><path d="M5.4 12.2A6.4 6.4 0 0 1 11.8 18.6"/><path d="M5.4 5.4A13.2 13.2 0 0 1 18.6 18.6"/>',
+  meg:    '<path d="M3.4 11.2v3.2l12 4.2V7L3.4 11.2z"/><path d="M16.4 9.6a3 3 0 0 1 0 5.6"/><path d="M7.4 15.4V20h3.4v-3.4"/>',
+  spark:  '<path d="M12 3.4l1.7 4.5 4.5 1.7-4.5 1.7L12 15.8l-1.7-4.5L5.8 9.6l4.5-1.7L12 3.4z"/><path d="M18.4 15.4l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2z"/>',
+  shield: '<path d="M12 3.2l7.2 2.8v5.2c0 4.5-3.1 8.2-7.2 10.2-4.1-2-7.2-5.7-7.2-10.2V6L12 3.2z"/>',
+  crown:  '<path d="M3.4 18.4 5 8.8l4.6 4.2L12 6.4l2.4 6.6L19 8.8l1.6 9.6H3.4z"/>'
+};
+const icon = (name, cls) => '<svg class="' + (cls || 'h-5 w-5') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[name] || '') + '</svg>';
+const SUN = '<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+const MOON = '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+/* The intro's exact theme toggle button */
+const themeBtn = () => '<button type="button" data-theme-toggle class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">' + SUN + MOON + '</button>';
+
+/* ============================== 5. LAYOUT =============================== */
+const PAGE_LINKS = [
+  ['/', 'Home'],
+  ['/dashboard', 'Dashboard'],
+  ['/events', 'Events'],
+  ['/teams', 'Teams'],
+  ['/gallery', 'Memories'],
+  ['/feed', 'Live Feed'],
+  ['/announcements', 'Announcements'],
+  ['/journey', 'My PIXEL Journey']
+];
+const EXTRA_LINKS = [
+  ['/dashboard', 'Dashboard'],
+  ['/events', 'Events'],
+  ['/teams', 'Teams'],
+  ['/gallery', 'Memories'],
+  ['/feed', 'Live Feed'],
+  ['/announcements', 'Announcements'],
+  ['/journey', 'My PIXEL Journey']
+];
+
+function nav() {
+  return '<header class="fixed inset-x-0 top-0 z-40 border-b border-softline bg-ivory/90 backdrop-blur-xl">' +
+    '<div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 lg:h-20 lg:px-8">' +
+      '<a href="#/" class="flex items-center gap-2.5">' +
+        '<img src="' + A.college + '" alt="Navodaya Institute of Technology" class="h-9 w-auto sm:h-10" />' +
+        '<span class="hidden h-8 w-px bg-softline sm:block"></span>' +
+        '<img src="' + A.logo + '" alt="PIXELS 2k26" class="h-10 w-auto sm:h-12" />' +
+      '</a>' +
+      '<nav class="hidden items-center gap-0.5 lg:flex">' +
+        EXTRA_LINKS.map(l => '<a href="#' + l[0] + '" class="rounded-full px-3 py-2 text-[13.5px] font-semibold ' +
+          (CUR() === l[0] ? 'bg-panel text-onpanel' : 'text-navy/75 hover:bg-white/60') + '">' + l[1] + '</a>').join('') +
+      '</nav>' +
+      '<div class="flex items-center gap-2">' +
+        themeBtn() +
+        '<a href="#/admin" class="hidden rounded-full border border-navy/20 px-4 py-2.5 text-[14px] font-semibold text-navy lg:inline-flex">Admin</a>' +
+        '<a href="#/captain" class="hidden rounded-full bg-gradient-to-r from-gold to-goldsoft px-4 py-2.5 text-[14px] font-semibold text-panel lg:inline-flex">Captain</a>' +
+        '<button type="button" data-action="menu" aria-label="Menu" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-softline text-navy lg:hidden">' +
+          '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>' +
+        '</button>' +
+      '</div>' +
+    '</div>' +
+    '<div id="drawer" class="hidden border-t border-softline bg-ivory px-4 pb-6 pt-4 lg:hidden">' +
+      '<p class="text-[12px] font-bold uppercase text-mutedink">All pages</p>' +
+      '<nav class="mt-3 grid gap-1">' +
+        EXTRA_LINKS.map(l => '<a href="#' + l[0] + '" class="flex items-center gap-3 rounded-xl px-4 py-3 text-[15px] font-medium hover:bg-white/60">' + icon(TAB_ICON[l[0]], 'h-4 w-4 text-gold') + l[1] + '</a>').join('') +
+      '</nav>' +
+      '<p class="mt-6 text-[12px] font-bold uppercase text-mutedink">Control panels</p>' +
+      '<nav class="mt-3 grid gap-1">' +
+        '<a href="#/admin" class="flex items-center gap-3 rounded-xl px-4 py-3 text-[15px] font-medium hover:bg-white/60">' + icon('shield', 'h-4 w-4 text-gold') + 'President / Admin Panel</a>' +
+        '<a href="#/captain" class="flex items-center gap-3 rounded-xl px-4 py-3 text-[15px] font-medium hover:bg-white/60">' + icon('crown', 'h-4 w-4 text-gold') + 'Team Captain Panel</a>' +
+      '</nav>' +
+      '<a href="#/" class="mt-6 flex items-center justify-center gap-2 rounded-full bg-panel px-5 py-3 text-[15px] font-semibold text-onpanel">Back to the intro</a>' +
+    '</div>' +
+  '</header>';
+}
+const CUR = () => '/' + (state.route[0] || '');
+const TAB_ICON = {
+  '/': 'home', '/dashboard': 'dash', '/events': 'cal', '/teams': 'users', '/gallery': 'img',
+  '/feed': 'rss', '/announcements': 'meg', '/journey': 'spark', '/admin': 'shield', '/captain': 'crown'
+};
+const NAV_TABS = [
+  ['/', 'Home'], ['/dashboard', 'Dashboard'], ['/events', 'Events'], ['/teams', 'Teams'],
+  ['/gallery', 'Memories'], ['/feed', 'Feed'], ['/announcements', 'Notices'], ['/journey', 'Journey'],
+  ['/admin', 'Admin'], ['/captain', 'Captain']
+];
+/* Mobile bottom bar — every page, outlined icon + label, scrolls sideways */
+function tabbar() {
+  const cur = CUR();
+  return '<nav class="fixed inset-x-0 bottom-0 z-40 border-t border-softline bg-ivory/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden">' +
+    '<div class="scroll-hide mx-auto flex max-w-7xl items-stretch gap-1 overflow-x-auto px-2 py-1.5">' +
+      NAV_TABS.map(t => '<a href="#' + t[0] + '" class="flex shrink-0 flex-col items-center gap-1 rounded-xl px-3.5 py-2 text-[12px] font-semibold ' +
+        (cur === t[0] ? 'bg-gold/15 text-gold' : 'text-mutedink') + '">' + icon(TAB_ICON[t[0]]) +
+        '<span class="whitespace-nowrap">' + t[1] + '</span></a>').join('') +
+    '</div></nav>';
+}
+function footer() {
+  const c = config();
+  return '<footer class="relative overflow-hidden bg-panel pb-[calc(5rem+env(safe-area-inset-bottom))] pt-16 text-onpanel lg:pb-0">' +
+    '<div class="mx-auto grid max-w-6xl gap-12 px-5 pb-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">' +
+      '<div class="sm:col-span-2">' +
+        '<p class="max-w-md text-[16px] leading-relaxed text-onpanel/70">PIXELS 2k26 — the intra-college fest of ' + esc(c.college_name || 'Navodaya Institute of Technology') + ', ' + esc(c.location || 'Raichur, Karnataka') + '. ' + EVENT_QUOTA + ' events, 4 teams, one month of pure energy.</p>' +
+        '<div class="mt-5 flex flex-wrap gap-5 text-[14px] text-onpanel/60"><span>📍 ' + esc(c.location || 'Raichur, Karnataka') + '</span><span>✉ pixels2k26@nit-raichur.in</span></div>' +
+      '</div>' +
+      '<div><h4 class="text-[13px] font-bold uppercase text-goldsoft">Explore</h4><ul class="mt-5 space-y-3 text-[15px] text-onpanel/75">' +
+        PAGE_LINKS.map(l => '<li><a href="#' + l[0] + '" class="hover:text-goldsoft">' + l[1] + '</a></li>').join('') +
+      '</ul></div>' +
+      '<div><h4 class="text-[13px] font-bold uppercase text-goldsoft">Panels</h4><ul class="mt-5 space-y-3 text-[15px] text-onpanel/75">' +
+        '<li><a href="#/admin" class="hover:text-goldsoft">President / Admin Panel</a></li>' +
+        '<li><a href="#/captain" class="hover:text-goldsoft">Team Captain Panel</a></li>' +
+        '<li><a href="#/dashboard" class="hover:text-goldsoft">PIXELS 2k26 Common Dashboard</a></li>' +
+      '</ul></div>' +
+    '</div>' +
+    '<div class="border-t border-onpanel/10 px-5 py-10 text-center lg:px-8">' +
+      '<p class="text-lg font-bold text-goldsoft sm:text-2xl">Crafted by Syed Numan Pasha</p>' +
+      '<a href="' + LINKEDIN + '" target="_blank" rel="noreferrer" class="mt-4 inline-flex items-center gap-2 rounded-full border border-goldsoft/45 bg-onpanel/5 px-5 py-2.5 text-[13px] font-semibold uppercase text-onpanel/85 hover:text-goldsoft">in · Connect via LinkedIn</a>' +
+    '</div>' +
+  '</footer>';
+}
+const header = (eyebrow, title, subtitle, actions) =>
+  '<div class="border-b border-softline bg-ivory/70"><div class="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-6 px-5 py-10 lg:px-8 lg:py-14">' +
+  '<div>' + section(eyebrow, title, subtitle) + '</div><div class="flex flex-wrap gap-3">' + (actions || '') + '</div></div></div>';
+
+/* ============================== 6. LANDING ============================== */
+const FEATURES = [
+  ['Hackathon · 120 pts', 'The biggest prize on the board — a full build sprint that decides the championship.', A.hackathon, ''],
+  ['Cricket · 60 pts', 'Tennis-ball knockout on the campus ground, with the loudest crowd of the month.', A.cricket, ''],
+  ['BGMI & Free Fire · 100 pts', 'Squad lobbies, live points tables and a finale streamed on the dashboard.', A.bgmi, ''],
+  ['Cultural Nights · 25 pts each', 'Dance, singing, comedy and open-mic stages that light up the evenings.', A.festival, ''],
+  ['AI Build Challenges', 'Bots, brand campaigns, stories and scenes — all built with AI, all judged live.', A.ai, ''],
+  ['Live Leaderboard', 'Every point updates the team standings instantly, for everyone to see.', A.leaderboard, ''],
+  ['Memories Gallery', 'Students upload their own PIXEL moments straight into the fest album.', A.memories, ''],
+  ['Live Feed', 'Newest upload first — the campus scrolls together, second by second.', A.live, 'LIVE'],
+  ['President Panel', 'One control room to create events, publish results and manage every team.', A.lock, '']
+];
+const STEPS = [
+  ['Step 01','Open the dashboard','Every event, point and standing is public from the first second.', A.hackathon],
+  ['Step 02','Follow live events','See what is running right now, what starts next and which arena to head to.', A.campus],
+  ['Step 03','Register & participate','Students enter their name, USN and events — coordinators see it instantly.', A.memories],
+  ['Step 04','Track the standings','Watch the four teams trade points on the live leaderboard.', A.leaderboard],
+  ['Step 05','Share your memories','Upload your PIXEL photos with your name, venue and team.', A.live],
+  ['Step 06','Captains & president control','Captains manage their roster, the president runs everything from one panel.', A.lock]
+];
+
+function landing() {
+  const c = config();
+  const pts = pointsPossible() || TOTAL_POINTS;
+  return nav() +
+  '<main class="pb-32 pt-16 lg:pb-0 lg:pt-20">' +
+    /* hero */
+    '<section class="relative overflow-hidden pb-10 pt-10 lg:pb-14 lg:pt-16">' +
+      '<div class="mx-auto grid max-w-7xl items-center gap-10 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:px-8">' +
+        '<div class="text-center lg:text-left">' +
+          '<div class="inline-flex items-center gap-3 rounded-full border border-gold/35 bg-white/70 px-4 py-2">' +
+            '<img src="' + A.college + '" class="h-6 w-auto" alt="" /><span class="text-[12px] font-bold uppercase text-navy/75">' + esc(c.college_name || 'Navodaya Institute of Technology') + ' · ' + esc(c.location || 'Raichur, Karnataka') + '</span>' +
+          '</div>' +
+          '<h1 class="mt-7 text-[3.6rem] font-black leading-[0.95] text-navy sm:text-[5rem] lg:text-[6rem]">PIXEL<br /><span class="gold-text">2k26</span></h1>' +
+          '<p class="mx-auto mt-4 max-w-xl text-xl font-semibold text-navy/85 sm:text-2xl lg:mx-0">' + esc(c.tagline || 'Where every pixel becomes a memory') + '</p>' +
+          '<p class="mx-auto mt-6 max-w-xl text-[16px] leading-relaxed text-mutedink sm:text-[17px] lg:mx-0">' + esc(c.intro || '') + '</p>' +
+          '<div class="mt-10 flex flex-col items-center gap-6 lg:items-start">' +
+            /* mobile-only outlined floating scroll arrow, above the buttons */
+            '<a href="#film" aria-label="Scroll down" class="float-soft inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/50 bg-white/60 text-golddark lg:hidden">' +
+              '<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>' +
+            '<div class="flex flex-wrap items-center justify-center gap-4 lg:justify-start">' +
+              '<a href="#/dashboard" class="' + BTN.dark + '">Get Started →</a>' +
+              '<a href="#/events" class="inline-flex items-center gap-2 rounded-full border border-gold/50 px-6 py-4 text-[16px] font-semibold text-gold hover:bg-gold/10">See all ' + EVENT_QUOTA + ' events of PIXELS 2k26</a>' +
+            '</div>' +
+          '</div>' +
+          '<div class="mx-auto mt-10 max-w-xl rounded-2xl border border-gold/30 bg-white/60 px-5 py-4 lg:mx-0">' +
+            '<p class="text-[12px] font-bold uppercase text-gold">Vote for ' + esc(c.campaign_name || 'Revan Siddheshwar') + '</p>' +
+            '<p class="mt-2 text-[16px] leading-relaxed text-navy/80">Make PIXELS 2k26 the grandest edition yet — carry every team to the biggest month of the year.</p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="flex justify-center">' +
+          /* wider + shorter frame, contain-fit: nothing is cropped from the video */
+          '<div class="w-full max-w-[400px] overflow-hidden rounded-2xl border border-gold/30 bg-black shadow-2xl sm:max-w-[450px] lg:max-w-[480px]">' +
+            '<video class="aspect-[4/5] w-full object-contain" src="' + A.heroVideo + '" autoplay muted loop playsinline preload="auto"></video>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="mt-8 hidden justify-center lg:mt-10 lg:flex"><a href="#film" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold" aria-label="Scroll down">↓</a></div>' +
+    '</section>' +
+    /* curved framed film, clear of the screen edges */
+    '<section id="film" class="w-full px-4 py-8 sm:px-6 lg:px-8 lg:py-10">' +
+      '<div class="mx-auto max-w-7xl overflow-hidden rounded-[1.6rem] border border-gold/25 bg-black shadow-2xl sm:rounded-[2rem]">' +
+        '<video class="h-auto w-full object-cover" src="' + A.filmVideo + '" autoplay muted loop playsinline preload="auto"></video>' +
+      '</div>' +
+    '</section>' +
+    /* about */
+    '<section class="mx-auto max-w-7xl px-5 py-20 lg:px-8">' +
+      '<div class="glass-card rounded-[2rem] px-6 py-10 sm:px-10 sm:py-12"><div class="grid gap-10 lg:grid-cols-[1.35fr_1fr]">' +
+        '<div><h2 class="text-3xl font-black leading-tight text-navy sm:text-4xl">One fest. Four teams. Every pixel counted.</h2>' +
+        '<p class="mt-5 text-[16px] leading-relaxed text-mutedink">PIXELS 2k26 brings the whole campus under one scoreboard. Technical sprints, sports finals, e-sports lobbies, indoor classics and cultural nights — all scored live, all visible to every student, and all decided on the leaderboard by the closing ceremony.</p>' +
+        '<a href="#/dashboard" class="mt-8 ' + BTN.gold + '">Open the live dashboard</a></div>' +
+        '<div class="grid grid-cols-2 gap-4">' + tile('Events', state.data.events.length || EVENT_QUOTA) + tile('Teams', state.data.teams.length || 4) + tile('Points in play', pts) + tile('Categories', state.data.categories.length || 6) + '</div>' +
+      '</div></div>' +
+    '</section>' +
+    /* features */
+    '<section class="mx-auto max-w-7xl px-5 pb-20 lg:px-8 lg:pb-28">' +
+      '<div class="mx-auto max-w-3xl text-center">' + section('The Edition','Four teams. ' + EVENT_QUOTA + ' arenas. One trophy.','Achilles, Hercules, Orpheus and Atlas go head to head across every arena of PIXELS 2k26 — and the platform tracks every single point.') + '</div>' +
+      '<div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">' +
+        FEATURES.map(f => '<article class="rounded-[1.6rem] border border-gold/30 bg-cover bg-center p-3 shadow-lg transition hover:-translate-y-1" style="background-image:url(\'' + A.cream + '\')">' +
+          '<div class="relative overflow-hidden rounded-[1.2rem]"><img src="' + f[2] + '" alt="" class="h-40 w-full object-cover" />' +
+            (f[3] ? '<span class="absolute left-3 top-3 rounded-full bg-red-600 px-3 py-1 text-[11px] font-bold uppercase text-white">' + f[3] + '</span>' : '') + '</div>' +
+          '<div class="px-3 pb-3 pt-5"><h3 class="text-[17px] font-bold text-navy">' + esc(f[0]) + '</h3><p class="mt-2 text-[14px] leading-relaxed text-navy/70">' + esc(f[1]) + '</p></div>' +
+        '</article>').join('') +
+      '</div>' +
+      '<div class="mt-12 flex justify-center"><a href="#/events" class="' + BTN.ghost + '">Browse the full event list ↗</a></div>' +
+    '</section>' +
+    /* how it works — six cards on the designed background, moving right to left */
+    '<section class="overflow-hidden py-20 lg:py-28">' +
+      '<div class="mx-auto max-w-7xl px-5 lg:px-8">' +
+        '<div class="max-w-3xl"><span class="text-[12px] font-bold uppercase text-gold">How it works</span>' +
+        '<h2 class="mt-4 text-4xl font-black leading-tight text-navy sm:text-5xl lg:text-6xl">Six steps from the first whistle to the final memory.</h2>' +
+        '<p class="mt-5 text-[16px] leading-relaxed text-mutedink sm:text-lg">The complete PIXELS 2k26 journey — built for students, captains and the president alike.</p></div>' +
+      '</div>' +
+      '<div class="mt-14 overflow-hidden"><div class="marquee-track flex w-max gap-6 px-5 lg:px-8">' +
+        STEPS.concat(STEPS).map(s => '<article class="w-[80vw] shrink-0 rounded-[1.6rem] border border-gold/25 p-3 shadow-xl sm:w-[350px]" style="background-image:url(\'' + A.howCard + '\');background-size:cover;background-position:center">' +
+          '<img src="' + s[3] + '" alt="" class="h-40 w-full rounded-[1.2rem] object-cover" />' +
+          '<div class="px-3 pb-4 pt-5"><span class="text-[12px] font-bold uppercase text-gold">' + s[0] + '</span>' +
+          '<h3 class="mt-2.5 text-[19px] font-bold text-navy">' + esc(s[1]) + '</h3><p class="mt-2 text-[14px] leading-relaxed text-navy/75">' + esc(s[2]) + '</p></div></article>').join('') +
+      '</div></div>' +
+      '<div class="mx-auto mt-12 flex max-w-7xl justify-center px-5 lg:px-8"><a href="#/dashboard" class="' + BTN.dark + '">Try it now — open the dashboard</a></div>' +
+    '</section>' +
+    /* cta */
+    '<section class="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div class="overflow-hidden rounded-[2rem] bg-panel px-6 py-12 sm:px-12 sm:py-14">' +
+      '<div class="grid items-center gap-12 lg:grid-cols-2"><div>' +
+        '<h2 class="text-3xl font-black leading-tight text-onpanel sm:text-5xl">Start now.<br /><span class="gold-text">Own the scoreboard.</span></h2>' +
+        '<p class="mt-5 max-w-lg text-[16px] leading-relaxed text-onpanel/75">Register for your events, follow every point live and push your team to the top of the PIXELS 2k26 leaderboard.</p>' +
+        '<div class="mt-9 flex flex-wrap gap-4"><a href="#/dashboard" class="' + BTN.gold + '">Start Now →</a><a href="#/teams" class="inline-flex items-center gap-2 rounded-full border border-onpanel/25 px-6 py-4 text-[16px] font-semibold text-onpanel/85 hover:text-goldsoft">Meet the four teams</a></div>' +
+      '</div><div class="overflow-hidden rounded-[1.8rem] border border-gold/35 bg-black/30 p-2"><video class="aspect-video w-full rounded-[1.4rem] object-cover" src="' + A.ctaVideo + '" autoplay muted loop playsinline preload="auto"></video></div></div>' +
+    '</div></section>' +
+    campaignBlock() +
+    installBlock() +
+  '</main>' + tabbar() + footer();
+}
+
+function campaignBlock() {
+  const c = config();
+  const name = c.campaign_name || 'Revan Siddheshwar';
+  return '<section class="relative overflow-hidden bg-panel py-20 sm:py-28"><div class="mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-2 lg:px-8">' +
+    '<div><span class="inline-flex rounded-full border border-goldsoft/50 px-4 py-1.5 text-[12px] font-semibold uppercase text-goldsoft">Campaign</span>' +
+    '<h2 class="mt-6 text-4xl font-black leading-[1.05] text-onpanel sm:text-5xl lg:text-[3.4rem]">Vote <span class="gold-text">' + esc(name.split(' ')[0]) + '</span><br />for a grander PIXEL.</h2>' +
+    '<p class="mt-6 max-w-xl text-[17px] leading-relaxed text-onpanel/75">' + esc(c.campaign_message || '') + '</p>' +
+    '<ul class="mt-8 space-y-3 text-[16px] text-onpanel/85">' +
+      ['More arenas, better stages, bigger prize pools','Every team heard — every team gets a fair shot','A fest remembered long after the lights go down']
+        .map(l => '<li>★ ' + l + '</li>').join('') +
+    '</ul>' +
+    '<div class="mt-9 flex flex-wrap items-center gap-4"><a href="#/dashboard" class="' + BTN.gold + '">Vote for ' + esc(name.split(' ')[0]) + '</a>' +
+    '<span class="text-[13px] font-semibold uppercase text-onpanel/50">' + esc(c.campaign_title || '') + '</span></div></div>' +
+    '<div class="flex justify-center"><img src="' + A.revan + '" alt="' + esc(name) + '" class="float-soft w-full max-w-sm drop-shadow-2xl" /></div>' +
+  '</div></section>';
+}
+
+function installSteps() {
+  return [
+    'Open ' + APP_URL + ' in Chrome on your Android phone.',
+    'Tap the ⋮ menu, then choose “Install app” or “Add to Home screen”.',
+    'PIXELS 2k26 lands on your home screen — open it like any other app.'
+  ];
+}
+function installBlock() {
+  const steps = installSteps();
+  const label = APK_URL ? 'Download the app (.apk)' : 'Install the app';
+  return '<section id="install" class="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20"><div class="overflow-hidden rounded-[2rem] border border-gold/30 bg-panel px-6 py-10 sm:px-10 sm:py-12">' +
+    '<div class="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]"><div>' +
+      '<span class="inline-flex rounded-full border border-goldsoft/50 px-4 py-1.5 text-[12px] font-bold uppercase text-goldsoft">Android app</span>' +
+      '<h2 class="mt-5 text-3xl font-black text-onpanel sm:text-4xl">Install PIXELS 2k26 on your phone.</h2>' +
+      '<p class="mt-4 max-w-lg text-[16px] leading-relaxed text-onpanel/75">Live scores, schedules and your own PIXEL journey in one tap — installed straight from the browser.</p>' +
+      '<button type="button" data-action="install" class="mt-8 ' + BTN.gold + '">⭳ ' + label + '</button>' +
+    '</div><ol class="space-y-4">' +
+      steps.map((s, i) => '<li class="flex items-start gap-4 rounded-2xl border border-onpanel/15 bg-onpanel/5 px-5 py-4"><span class="num mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold text-[13px] font-bold text-panel">' + (i + 1) + '</span><p class="text-[15px] text-onpanel/80">' + s + '</p></li>').join('') +
+      '<li class="flex items-center gap-3 px-2"><img src="' + A.logo + '" alt="" class="h-10 w-auto" /><span class="text-[12px] font-semibold uppercase text-onpanel/50">Works offline-friendly on Android</span></li>' +
+    '</ol></div></div></section>';
+}
+
+/* ============================= 7. DASHBOARD ============================= */
+function dashboard() {
+  const d = state.data, c = config();
+  const ranked = standings();
+  const live = d.events.filter(e => e.status === 'live');
+  const upcoming = d.events.filter(e => e.status === 'upcoming');
+  const participants = d.registrations.reduce((s, r) => s + num(r.participants_count || 1), 0);
+
+  const eventCol = (title, list, emptyTitle) => '<div><div class="mb-4 flex items-center gap-2">' +
+    '<h3 class="text-[15px] font-bold uppercase text-navy">' + title + '</h3>' +
+    '<span class="num rounded-full bg-navy/10 px-2 py-0.5 text-[12px] font-bold text-navy/70">' + list.length + '</span></div>' +
+    (list.length ? '<div class="grid gap-4 sm:grid-cols-2">' + list.slice(0, 6).map(e => eventCard(e)).join('') + '</div>'
+      : empty(emptyTitle, 'Nothing has been scheduled so far — the president publishes events from the admin panel and they appear here instantly.')) + '</div>';
+
+  return nav() + header('Open dashboard', esc(c.event_name || 'PIXELS 2k26') + ' Common Dashboard',
+      'Live events, team standings, rosters, registrations, memories and every point on the board — open to the whole campus.',
+      '<a href="#/journey" class="' + BTN.dark + '">' + icon('spark','h-4 w-4') + ' My PIXEL Journey</a><a href="#/captain" class="' + BTN.gold + '">Captain login</a><a href="#/admin" class="' + BTN.ghost + '">Admin / President</a>') +
+  '<div class="mx-auto max-w-7xl space-y-16 px-5 py-12 lg:px-8 lg:py-16">' +
+    '<div class="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-6">' +
+      tile('Total teams', d.teams.length) + tile('Total students', d.members.length) + tile('Total events', d.events.length) +
+      tile('Points in play', pointsPossible() || TOTAL_POINTS) + tile('Live right now', live.length, true) + tile('Registrations', d.registrations.length) +
+    '</div>' +
+    '<a href="#/journey" class="glass-card flex flex-wrap items-center justify-between gap-5 rounded-[1.8rem] border border-gold/30 p-6 sm:p-7">' +
+      '<div><p class="text-[12px] font-bold uppercase text-gold">My PIXEL Journey</p>' +
+      '<p class="mt-2 text-lg font-bold text-navy sm:text-xl">Follow every event you entered, the points you scored and your team&rsquo;s progress.</p></div>' +
+      '<span class="inline-flex shrink-0 items-center gap-2 rounded-full bg-panel px-5 py-3 text-[15px] font-semibold text-onpanel">' + icon('spark','h-4 w-4') + ' Open my journey</span>' +
+    '</a>' +
+    '<section class="space-y-10">' + eventCol('Live now', live, 'No events scheduled yet') + eventCol('Up next', upcoming, 'No events scheduled yet') +
+      (d.events.length ? '<a href="#/events" class="' + BTN.ghost + '">See the complete schedule</a>' : '') + '</section>' +
+    '<section class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">' +
+      card(section('Visual analytics','Where the points are landing','Live points tally across all four teams of PIXELS 2k26.') +
+        '<div class="mt-6 space-y-4">' + (ranked.length ? ranked.map(t =>
+          '<div><div class="flex items-center justify-between text-[14px] font-semibold text-navy"><span>' + esc(t.name) + '</span><span class="num">' + t.points + '</span></div>' +
+          '<div class="mt-2 h-2.5 overflow-hidden rounded-full bg-navy/10"><div class="h-full rounded-full bg-gradient-to-r from-gold to-goldsoft" style="width:' + Math.min(100, (t.points / Math.max(1, ranked[0].points)) * 100) + '%"></div></div></div>').join('')
+          : '<p class="text-[15px] text-mutedink">No team data yet.</p>') + '</div>') +
+      '<div class="space-y-8">' + card(section('Point pool','Points by category') + '<div class="mt-5 space-y-3">' +
+        (d.categories.filter(cat => d.events.some(e => e.category === cat.name)).map(cat =>
+          '<div class="flex items-center justify-between text-[14px] text-navy/80"><span>' + esc(cat.icon || '•') + ' ' + esc(cat.name) + '</span><span class="num">' + d.events.filter(e => e.category === cat.name).length + ' events</span></div>').join('')
+          || '<p class="text-[15px] text-mutedink">No events yet.</p>') + '</div>') +
+        card(section('Standings','Team rankings') + '<div class="mt-5">' + standingsBlock(ranked) + '</div>') + '</div>' +
+    '</section>' +
+    '<section>' + section('Teams','The four teams of PIXELS 2k26','Captains, vice captains and current standings — tap a team for its full roster.') +
+      '<div class="mt-6 grid gap-6 lg:grid-cols-[1fr_0.85fr]"><div class="grid gap-4 sm:grid-cols-2">' +
+        d.teams.map(t => '<a href="#/teams/' + t.id + '" class="rounded-2xl border border-gold/25 bg-white/75 p-6 hover:-translate-y-1">' +
+          '<p class="text-lg font-black text-navy">' + esc(t.name) + '</p>' +
+          '<p class="mt-1.5 text-[12px] uppercase text-gold">' + esc(t.motto || 'Team of PIXELS 2k26') + '</p>' +
+          '<div class="mt-5 space-y-1 text-[14px] text-navy/75"><p>Captain · ' + esc(t.captain_name || 'To be announced') + '</p>' +
+          '<p>Vice captain · ' + esc(t.vice_captain_name || 'To be announced') + '</p>' +
+          '<p class="num font-semibold text-navy">' + d.members.filter(m => m.team === t.name).length + ' members · ' + num(t.total_points) + ' pts</p></div></a>').join('') +
+      '</div><div class="rounded-[1.8rem] border border-softline bg-white/70 p-6">' + section('Leader board','Team ranks') + '<div class="mt-5">' + standingsBlock(ranked) + '</div></div></div></section>' +
+    '<section>' + section('Notice board','Announcements from the fest desk') + '<div class="mt-6 space-y-4">' +
+      (d.announcements.length ? d.announcements.map(a => '<article class="rounded-2xl border border-softline bg-white/75 px-5 py-4">' +
+        '<p class="text-[16px] font-bold text-navy">' + esc(a.title) + '</p><p class="mt-2 text-[15px] text-mutedink">' + esc(a.body) + '</p>' +
+        '<p class="mt-2 text-[12px] uppercase text-mutedink">' + esc(a.author_name || 'Fest desk') + ' · ' + esc(a.category || 'General') + '</p></article>').join('')
+        : empty('No announcements yet','The president and team captains post notices from their panels — everything they publish appears here instantly.')) +
+    '</div></section>' +
+    '<section>' + section('Participation','Who is in, who is yet to enter', d.members.length + ' students on the rosters · ' + participants + ' participants recorded across ' + d.registrations.length + ' registrations.') +
+      (d.members.length ? '' : '<div class="mt-6">' + empty('No team members added yet','The president and captains add students to the teams first.') + '</div>') + '</section>' +
+    registerBlock() +
+    '<section>' + section('Memories','Latest from the PIXELS 2k26 album') + '<div class="mt-6">' +
+      (d.posts.length ? '<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">' + d.posts.slice(0, 8).map(p =>
+        '<figure class="overflow-hidden rounded-2xl border border-softline bg-white/75"><img src="' + esc(p.image_url) + '" alt="" class="h-40 w-full object-cover" />' +
+        '<figcaption class="px-4 py-3 text-[13px] text-mutedink">' + esc(p.caption || '') + ' · ' + esc(p.uploader_name) + '</figcaption></figure>').join('') + '</div>'
+        : empty('Album is empty','Students upload their PIXEL moments from the Memories page — every photo lands in this strip.')) + '</div></section>' +
+  '</div>' + campaignBlock() + footer() + tabbar();
+}
+function standingsBlock(ranked) {
+  return '<div class="space-y-3">' + ranked.map(t => '<div class="flex items-center gap-4 rounded-2xl border border-softline bg-white/70 px-4 py-3">' +
+    '<span class="num inline-flex h-8 w-8 items-center justify-center rounded-full bg-panel text-[13px] font-bold text-onpanel">' + t.rank + '</span>' +
+    '<div class="min-w-0 flex-1"><p class="truncate text-[15px] font-bold text-navy">' + esc(t.name) + '</p>' +
+    '<p class="text-[12px] uppercase text-mutedink">' + esc(t.captain_name || 'Captain to be announced') + '</p></div>' +
+    '<span class="num text-lg font-black text-navy">' + t.points + '</span></div>').join('') + '</div>';
+}
+function eventCard(e) {
+  return '<a href="#/events/' + e.id + '" class="block rounded-2xl border border-softline bg-white/75 p-5 hover:-translate-y-1">' +
+    '<div class="flex items-center justify-between gap-3"><p class="text-[16px] font-bold text-navy">' + esc(e.name) + '</p>' +
+    '<span class="rounded-full px-3 py-1 text-[11px] font-bold uppercase ' + statusPill(e.status) + '">' + esc(e.status) + '</span></div>' +
+    '<p class="mt-2 text-[12px] uppercase text-mutedink">' + esc(e.category || '') + ' · ' + num(e.points) + ' pts</p>' +
+    (e.venue ? '<p class="mt-2 text-[14px] text-mutedink">📍 ' + esc(e.venue) + (e.schedule ? ' · ' + esc(e.schedule) : '') + '</p>' : '') + '</a>';
+}
+function registerBlock() {
+  const d = state.data, s = student();
+  return '<section id="register">' + section('Participate','Register for your events','Enter your details and the events you are taking part in — coordinators see it instantly.') +
+    '<form data-form="register" class="mt-6 rounded-[1.8rem] border border-gold/30 bg-white/75 p-6 sm:p-8"><div class="grid gap-5 sm:grid-cols-2">' +
+      field('Student name','student_name','text',s.name,'Full name',true) +
+      field('USN','usn','text',s.usn,'University registration number') +
+      selectField('Team','team', d.teams.map(t => t.name), s.team, 'Select your team') +
+      selectField('Event','event_name', d.events.map(e => e.name), '', 'Select an event', true) +
+      field('Number of participants','participants_count','number',1,'') +
+      field('Contact','contact','text','','Phone or email') +
+      areaField('Notes','notes','','Squad details, preferences or anything the coordinators should know','sm:col-span-2') +
+    '</div><div class="mt-6 flex flex-wrap items-center gap-4"><button class="' + BTN.gold + '" type="submit">Submit registration</button>' +
+    (state.flash ? '<span class="text-[15px] font-semibold text-gold">' + esc(state.flash) + '</span>' : '') + '</div></form></section>';
+}
+
+/* ============================== 8. JOURNEY ============================= */
+function journey() {
+  const d = state.data, s = student();
+  const mine = d.registrations.filter(r => (s.usn && norm(r.usn) === norm(s.usn)) || (s.name && norm(r.student_name) === norm(s.name)));
+  const rows = mine.map(r => {
+    const ev = eventByName(r.event_name), res = resultByEvent(r.event_name);
+    const team = r.team || s.team;
+    let pts = 0, place = null;
+    if (res && team) {
+      if (norm(res.first_team) === norm(team)) { pts = num(ev && ev.points); place = '1st'; }
+      else if (norm(res.second_team) === norm(team)) { pts = Math.round(num(ev && ev.points) * 0.5); place = '2nd'; }
+      else if (norm(res.third_team) === norm(team)) { pts = Math.round(num(ev && ev.points) * 0.25); place = '3rd'; }
+    }
+    return { r, ev, pts, place, team };
+  });
+  const points = rows.reduce((a, b) => a + b.pts, 0);
+  const teamRec = teamByName(s.team);
+  const teamTotal = num(teamRec && teamRec.total_points);
+  const share = teamTotal > 0 ? Math.round((points / teamTotal) * 100) : 0;
+  const cats = [...new Set(rows.map(x => (x.ev && x.ev.category) || x.r.category).filter(Boolean))];
+
+  return nav() + header('Personal track','My PIXEL Journey',
+      s.name ? 'Every event, every point and every contribution ' + s.name + ' made for ' + (s.team || 'the team') + '.' : 'Set your student details once and follow every event you take part in across PIXELS 2k26.',
+      '<a href="#/dashboard" class="' + BTN.ghost + '">Back to dashboard</a>') +
+  '<div class="mx-auto max-w-6xl space-y-12 px-5 py-12 lg:px-8 lg:py-16">' +
+    '<form data-form="student" class="rounded-[1.8rem] border border-gold/30 bg-white/75 p-6 sm:p-8">' +
+      '<h2 class="text-lg font-bold text-navy">Your student identity</h2>' +
+      '<p class="mt-2 text-[15px] text-mutedink">Enter your details once on this device — your journey tracks every event you register for.</p>' +
+      '<div class="mt-6 grid gap-5 sm:grid-cols-3">' + field('Student name','name','text',s.name,'Full name',true) +
+      field('USN','usn','text',s.usn,'University registration number') +
+      selectField('Team','team', d.teams.map(t => t.name), s.team, 'Select your team') + '</div>' +
+      '<div class="mt-6 flex items-center gap-4"><button class="' + BTN.gold + '" type="submit">Save my details</button>' +
+      (state.flash ? '<span class="text-[15px] font-semibold text-gold">' + esc(state.flash) + '</span>' : '') + '</div></form>' +
+    '<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">' +
+      tile('Events participated', rows.length) + tile('Points scored for my team', points, true) +
+      tile('Share of team points', share + '%') + tile((s.team || 'Team') + ' total points', teamTotal) + '</div>' +
+    '<section>' + section('Participations','Events on my journey','Points shown are the value your team earned in each event you entered.') +
+      '<div class="mt-6 space-y-3">' + (rows.length ? rows.map(x => '<article class="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-softline bg-white/75 px-5 py-4">' +
+        '<div class="min-w-0"><p class="truncate text-[16px] font-bold text-navy">' + esc(x.r.event_name) + '</p>' +
+        '<p class="mt-1 text-[12px] uppercase text-mutedink">' + esc((x.ev && x.ev.category) || x.r.category || '—') + ' · ' + esc(x.team || '—') + '</p>' +
+        '<p class="mt-2 text-[13px] text-mutedink">' + (x.ev && x.ev.venue ? '📍 ' + esc(x.ev.venue) + ' ' : '') + (x.ev && x.ev.schedule ? '· ' + esc(x.ev.schedule) : '') + '</p></div>' +
+        '<div class="flex items-center gap-3"><span class="rounded-full px-3 py-1.5 text-[11px] font-bold uppercase ' + statusPill(x.ev ? x.ev.status : 'upcoming') + '">' + esc(x.ev ? x.ev.status : 'upcoming') + '</span>' +
+        (x.place ? '<span class="rounded-full bg-gold px-3 py-1.5 text-[11px] font-bold uppercase text-panel">' + x.place + ' place</span>' : '') +
+        '<span class="num text-lg font-black text-navy">' + x.pts + '</span></div></article>').join('')
+        : empty('No events on your journey yet','Register for an event from the dashboard and it will appear here with the points your team earns.')) + '</div></section>' +
+    (cats.length ? '<section>' + section('Spread','Where you competed') + '<div class="mt-5 flex flex-wrap gap-3">' +
+      cats.map(c => '<span class="rounded-full border border-gold/40 px-4 py-2 text-[14px] font-semibold text-navy/80">' + esc(c) + '</span>').join('') + '</div></section>' : '') +
+  '</div>' + tabbar();
+}
+
+/* ========================= 9. EVENTS / TEAMS / FEED ===================== */
+function events() {
+  const d = state.data;
+  const filter = state.filterCat || 'all';
+  const list = filter === 'all' ? d.events : d.events.filter(e => e.category === filter);
+  return nav() + header('Schedule','All ' + EVENT_QUOTA + ' events of PIXELS 2k26','Every arena, every point value, every venue — filter by category to plan your month.',
+      '<a href="#/dashboard" class="' + BTN.ghost + '">Register for events</a>') +
+  '<div class="mx-auto max-w-7xl px-5 py-10 lg:px-8 lg:py-14">' +
+    '<div class="scroll-hide flex flex-wrap gap-2">' + chip('all', filter === 'all') + d.categories.map(c => chip(c.name, filter === c.name)).join('') + '</div>' +
+    '<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">' +
+      (list.length ? list.map(e => eventCard(e)).join('')
+        : '<div class="sm:col-span-2 lg:col-span-3">' + empty('No events published yet','The president creates and publishes every event from the admin panel — they show up here the moment they are live.') + '</div>') +
+    '</div>' +
+  '</div>' + tabbar();
+}
+function eventDetail(id) {
+  const e = state.data.events.find(x => x.id === id);
+  if (!e) return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-3xl px-5">' + empty('Event not found','This event may have been removed by the president.') + '</div></main>' + tabbar();
+  const rows = [
+    ['Category', e.category], ['Points', num(e.points) + ' pts'], ['Schedule', e.schedule], ['Venue', e.venue],
+    ['Student coordinators', e.student_coordinators], ['Faculty coordinators', e.faculty_coordinators],
+    ['Judges / jury', e.judges], ['Prizes', e.prizes], ['Participants', e.participants_count]
+  ].filter(r => r[1]);
+  return nav() + header('Event', e.name, e.description || 'Full details, rules and coordinators for this arena.',
+      '<a href="#/dashboard" class="' + BTN.gold + '">Register for this event</a>') +
+  '<div class="mx-auto max-w-5xl space-y-8 px-5 py-12 lg:px-8">' +
+    '<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">' + rows.map(r => '<div class="rounded-2xl border border-softline bg-white/75 px-5 py-4">' +
+      '<p class="text-[12px] font-semibold uppercase text-mutedink">' + esc(r[0]) + '</p><p class="mt-2 text-[16px] font-semibold text-navy">' + esc(r[1]) + '</p></div>').join('') + '</div>' +
+    (e.rules ? card('<h3 class="text-lg font-bold text-navy">Rules & regulations</h3><p class="mt-3 whitespace-pre-line text-[15px] leading-relaxed text-mutedink">' + esc(e.rules) + '</p>') : '') +
+    (e.result_summary ? card('<h3 class="text-lg font-bold text-navy">Result</h3><p class="mt-3 text-[15px] text-mutedink">' + esc(e.result_summary) + '</p>') : '') +
+  '</div>' + tabbar();
+}
+function teams() {
+  const d = state.data, ranked = standings();
+  return nav() + header('The teams','Four teams, one trophy.','Rosters, captains and the live points race.','<a href="#/journey" class="' + BTN.ghost + '">My PIXEL Journey</a>') +
+  '<div class="mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16">' +
+    '<div class="grid gap-6 sm:grid-cols-2">' + d.teams.map(t => '<a href="#/teams/' + t.id + '" class="rounded-[1.6rem] border border-gold/25 bg-white/75 p-6 hover:-translate-y-1">' +
+      '<div class="flex items-center gap-3"><span class="h-3 w-3 rounded-full" style="background:' + esc(t.color || '#BF8E4B') + '"></span>' +
+      '<p class="text-xl font-black text-navy">' + esc(t.name) + '</p></div>' +
+      '<p class="mt-2 text-[12px] uppercase text-gold">' + esc(t.motto || '') + '</p>' +
+      '<p class="mt-4 text-[15px] text-mutedink">' + esc(t.description || '') + '</p>' +
+      '<div class="mt-5 space-y-1 text-[14px] text-navy/75"><p>Captain · ' + esc(t.captain_name || 'To be announced') + '</p>' +
+      '<p>Vice captain · ' + esc(t.vice_captain_name || 'To be announced') + '</p>' +
+      '<p class="num font-semibold text-navy">' + d.members.filter(m => m.team === t.name).length + ' members · ' + num(t.total_points) + ' pts</p></div></a>').join('') + '</div>' +
+    '<div class="mt-12">' + section('Leader board','Where every team stands') + '<div class="mt-6">' + standingsBlock(ranked) + '</div></div>' +
+  '</div>' + tabbar();
+}
+function teamDetail(id) {
+  const t = state.data.teams.find(x => x.id === id);
+  if (!t) return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-3xl px-5">' + empty('Team not found','This team may have been removed by the president.') + '</div></main>' + tabbar();
+  const roster = state.data.members.filter(m => m.team === t.name);
+  const res = state.data.results.filter(r => [r.first_team, r.second_team, r.third_team].some(x => norm(x) === norm(t.name)));
+  return nav() + header('Team', t.name, t.motto || '', '<a href="#/dashboard" class="' + BTN.ghost + '">Back to dashboard</a>') +
+  '<div class="mx-auto max-w-5xl space-y-10 px-5 py-12 lg:px-8">' +
+    '<div class="grid gap-4 sm:grid-cols-3">' + tile('Team points', num(t.total_points), true) + tile('Members', roster.length) + tile('Results', res.length) + '</div>' +
+    card('<h3 class="text-lg font-bold text-navy">Roster (' + roster.length + ')</h3>' +
+      (roster.length ? '<div class="mt-4 overflow-x-auto"><table class="w-full text-left text-[15px]"><thead class="text-[12px] uppercase text-mutedink"><tr><th class="py-3 pr-4">Name</th><th class="py-3 pr-4">USN</th><th class="py-3 pr-4">Role</th><th class="py-3">Status</th></tr></thead><tbody>' +
+        roster.map(m => '<tr class="border-t border-softline text-navy"><td class="py-3 pr-4 font-semibold">' + esc(m.name) + '</td><td class="py-3 pr-4">' + esc(m.usn || '—') + '</td>' +
+        '<td class="py-3 pr-4 capitalize">' + esc(m.role || 'member') + '</td><td class="py-3"><span class="rounded-full px-2.5 py-1 text-[11px] font-bold uppercase ' + (m.status === 'pending' ? 'bg-gold/20 text-golddark' : 'bg-navy/10 text-navy/70') + '">' + esc(m.status || 'confirmed') + '</span></td></tr>').join('') +
+        '</tbody></table></div>' : empty('No roster published yet',"The captain or the president will add this team's students."))) +
+    card('<h3 class="text-lg font-bold text-navy">Results</h3>' + (res.length ? '<div class="mt-4 space-y-3">' + res.map(r =>
+      '<div class="rounded-xl border border-softline px-4 py-3 text-[15px] text-navy"><span class="font-semibold">' + esc(r.event_name) + '</span> · ' +
+      '🥇 ' + esc(r.first_team || '—') + ' · 🥈 ' + esc(r.second_team || '—') + ' · 🥉 ' + esc(r.third_team || '—') + '</div>').join('') + '</div>'
+      : '<p class="mt-3 text-[15px] text-mutedink">No results published for this team yet.</p>')) +
+  '</div>' + tabbar();
+}
+function gallery() {
+  const d = state.data, s = student();
+  return nav() + header('Memories','The PIXELS 2k26 album','Upload your fest photos — every picture appears in the album and the live feed.',
+      '<a href="#/feed" class="' + BTN.ghost + '">See the live feed</a>') +
+  '<div class="mx-auto max-w-7xl px-5 py-12 lg:px-8">' +
+    '<form data-form="photo" class="rounded-[1.8rem] border border-gold/30 bg-white/75 p-6 sm:p-8"><div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">' +
+      field('Your name','uploader_name','text',s.name,'Full name',true) + field('USN','uploader_usn','text',s.usn,'University registration number') +
+      selectField('Team','team', d.teams.map(t => t.name), s.team, 'Select your team') +
+      field('Venue','venue','text','','e.g. Seminar Hall') + field('Caption','caption','text','','What is happening in this shot?') +
+      field('Photo link (optional)','image_url','url','','Paste an image link instead of uploading') +
+      '<div class="lg:col-span-3"><label class="text-[12px] font-semibold uppercase text-mutedink">Upload a photo</label>' +
+      '<input type="file" name="photo" accept="image/*" class="mt-2 w-full rounded-md border border-softline bg-white px-3 py-2 text-[15px] text-navy" /></div>' +
+    '</div><div class="mt-6 flex items-center gap-4"><button class="' + BTN.gold + '" type="submit">Add to the album</button>' +
+    (state.flash ? '<span class="text-[15px] font-semibold text-gold">' + esc(state.flash) + '</span>' : '') + '</div></form>' +
+    '<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">' +
+      (d.posts.length ? d.posts.map(p => '<figure class="overflow-hidden rounded-2xl border border-softline bg-white/75">' +
+        '<img src="' + esc(p.image_url) + '" alt="" class="h-44 w-full object-cover" />' +
+        '<figcaption class="px-4 py-3"><p class="text-[14px] font-semibold text-navy">' + esc(p.caption || '') + '</p>' +
+        '<p class="mt-1 text-[12px] uppercase text-mutedink">' + esc(p.uploader_name) + ' · ' + esc(p.team || '') + '</p>' +
+        '<button type="button" data-action="like" data-id="' + p.id + '" class="mt-2 text-[13px] font-semibold text-gold">♥ ' + num(p.likes) + '</button></figcaption></figure>').join('')
+        : '<div class="sm:col-span-2 lg:col-span-4">' + empty('Album is empty','Be the first — upload your PIXEL moment above and it lands here instantly.') + '</div>') +
+    '</div>' +
+  '</div>' + tabbar();
+}
+function feed() {
+  const d = state.data;
+  return nav() + header('Live feed','Everything, newest first','The campus scrolls together — photos, notices and results as they happen.', '') +
+  '<div class="mx-auto max-w-3xl px-5 py-12 lg:py-16">' +
+    (d.posts.length ? d.posts.map(p => '<article class="mb-6 overflow-hidden rounded-[1.6rem] border border-softline bg-white/75">' +
+      '<img src="' + esc(p.image_url) + '" alt="" class="max-h-[420px] w-full object-cover" />' +
+      '<div class="px-5 py-4"><p class="text-[16px] font-semibold text-navy">' + esc(p.caption || '') + '</p>' +
+      '<p class="mt-1 text-[12px] uppercase text-mutedink">' + esc(p.uploader_name) + ' · ' + esc(p.team || '') + (p.venue ? ' · ' + esc(p.venue) : '') + '</p></div></article>').join('')
+      : empty('Nothing on the feed yet','Photos uploaded to the Memories album appear here the moment they are added.')) +
+  '</div>' + tabbar();
+}
+function announcements() {
+  const d = state.data;
+  return nav() + header('Notice board','Announcements','Everything the president and team captains publish for the campus.', '') +
+  '<div class="mx-auto max-w-3xl space-y-4 px-5 py-12 lg:py-16">' +
+    (d.announcements.length ? d.announcements.map(a => '<article class="rounded-2xl border border-softline bg-white/75 px-5 py-4">' +
+      '<p class="text-[16px] font-bold text-navy">' + (a.pinned ? '📌 ' : '') + esc(a.title) + '</p>' +
+      '<p class="mt-2 text-[15px] leading-relaxed text-mutedink">' + esc(a.body) + '</p>' +
+      '<p class="mt-3 text-[12px] uppercase text-mutedink">' + esc(a.author_name || 'Fest desk') + ' · ' + esc(a.category || 'General') + '</p></article>').join('')
+      : empty('No announcements yet','The president and captains post from their panels — notices appear here instantly.')) +
+  '</div>' + tabbar();
+}
+
+/* ============================== 10. ADMIN ============================== */
+function adminGate() {
+  return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-md px-5">' +
+    '<div class="rounded-[2rem] border border-gold/30 bg-white/80 p-8 text-center">' +
+      '<img src="' + A.logo + '" alt="PIXELS 2k26" class="mx-auto h-16 w-auto" />' +
+      '<h1 class="mt-6 text-2xl font-black text-navy">President / Admin panel</h1>' +
+      '<p class="mt-2 text-[15px] text-mutedink">Enter the president password to open the control room.</p>' +
+      '<form data-form="adminLogin" class="mt-6"><input name="password" type="password" placeholder="Admin password" class="h-11 w-full rounded-md border border-softline bg-white px-3 text-center text-[15px] text-navy" required />' +
+      '<button class="mt-4 w-full rounded-full bg-gradient-to-r from-gold to-goldsoft py-3.5 text-[15px] font-semibold text-panel" type="submit">Unlock the panel</button>' +
+      (state.flash ? '<p class="mt-3 text-[15px] font-semibold text-red-600">' + esc(state.flash) + '</p>' : '') + '</form>' +
+      '<p class="mt-5 text-[13px] text-mutedink">Default password: <span class="font-semibold">revan2k26</span> — change it in Settings.</p>' +
+    '</div></div></main>' + tabbar();
+}
+const ADMIN_TABS = [['teams','Teams'],['members','Members'],['events','Categories & events'],['results','Results'],['registrations','Registrations'],['content','Notice board & album'],['settings','Settings']];
+function admin() {
+  if (!isAdmin()) return adminGate();
+  const d = state.data, tab = state.adminTab || 'teams';
+  return nav() + header('President / admin panel', (config().event_name || 'PIXELS 2k26') + ' control room',
+      'Create teams, set captains and passwords, add members, publish events and results, post announcements and moderate the album.',
+      '<a href="#/dashboard" class="' + BTN.ghost + '">View public dashboard</a>' +
+      '<button type="button" data-action="adminLogout" class="' + BTN.dark + '">Log out</button>') +
+  '<div class="mx-auto max-w-7xl px-5 py-8 lg:px-8"><div class="scroll-hide flex gap-2 overflow-x-auto pb-1">' +
+    ADMIN_TABS.map(t => '<button type="button" data-action="adminTab" data-value="' + t[0] + '" class="shrink-0 rounded-full px-4 py-2.5 text-[14px] font-semibold ' +
+      (tab === t[0] ? 'bg-panel text-onpanel' : 'border border-softline text-navy/70') + '">' + t[1] + '</button>').join('') + '</div>' +
+  '<p class="mt-5 text-[12px] font-semibold uppercase text-mutedink">' + d.teams.length + ' teams · ' + d.members.length + ' members · ' + d.events.length + ' events · ' + d.registrations.length + ' registrations</p></div>' +
+  '<div class="mx-auto max-w-7xl space-y-8 px-5 py-8 lg:px-8 lg:py-12">' +
+    (tab === 'teams' ? adminTeams() : '') + (tab === 'members' ? adminMembers() : '') + (tab === 'events' ? adminEvents() : '') +
+    (tab === 'results' ? adminResults() : '') + (tab === 'registrations' ? adminRegistrations() : '') +
+    (tab === 'content' ? adminContent() : '') + (tab === 'settings' ? adminSettings() : '') +
+  '</div>' + tabbar();
+}
+const adminCard = (title, subtitle, body) => card('<h3 class="text-lg font-bold text-navy">' + esc(title) + '</h3>' +
+  (subtitle ? '<p class="mt-1 text-[14px] text-mutedink">' + esc(subtitle) + '</p>' : '') + '<div class="mt-6">' + body + '</div>');
+function adminTeams() {
+  const d = state.data;
+  return adminCard('Teams', d.teams.length + ' teams competing in PIXELS 2k26. Add as many as the fest needs.',
+    '<form data-form="addTeam" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">' + field('Team name','name','text','','e.g. Achilles',true) +
+    field('Motto','motto','text','','Strike first, strike hardest') + field('Captain name','captain_name','text','','Captain') +
+    field('Vice captain','vice_captain_name','text','','Vice captain') +
+    '<div class="sm:col-span-2 lg:col-span-4"><button class="' + BTN.gold + '" type="submit">Create team</button></div></form>' +
+    '<div class="mt-8 space-y-3">' + d.teams.map(t => '<details class="rounded-2xl border border-softline bg-white/70 px-5 py-4"><summary class="flex cursor-pointer list-none flex-wrap items-center justify-between gap-4">' +
+      '<div><p class="text-[16px] font-bold text-navy">' + esc(t.name) + '</p><p class="text-[12px] uppercase text-mutedink">' + esc(t.motto || '') + ' · ' + num(t.total_points) + ' pts</p></div>' +
+      '<div class="flex items-center gap-3"><span class="num rounded-full bg-navy/10 px-3 py-1.5 text-[12px] font-bold text-navy">' + esc(t.captain_password || '—') + '</span>' +
+      '<button type="button" data-action="newPass" data-id="' + t.id + '" class="text-[12px] font-semibold text-gold">New password</button>' +
+      '<button type="button" data-action="removeTeam" data-id="' + t.id + '" class="text-[12px] font-semibold text-red-600">Delete</button></div></summary>' +
+      '<form data-form="saveTeam" data-id="' + t.id + '" class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">' +
+        field('Captain name','captain_name','text',t.captain_name,'Captain') +
+        field('Vice captain name','vice_captain_name','text',t.vice_captain_name,'Vice captain') +
+        field('Team points','total_points','number',t.total_points,'') +
+        field('Motto','motto','text',t.motto,'') + field('Accent colour','color','text',t.color,'#BF8E4B') +
+        field('Captain password','captain_password','text',t.captain_password,'ACH-XXXX') +
+        areaField('Description','description',t.description,'About this team','sm:col-span-2 lg:col-span-3') +
+        '<div class="lg:col-span-3"><button class="' + BTN.dark + '" type="submit">Save team</button></div></form></details>').join('') + '</div>');
+}
+function adminMembers() {
+  const d = state.data;
+  return adminCard('Members', 'Add students one by one with their team, USN and details. A captain can add students too — they arrive highlighted for you to confirm.',
+    '<form data-form="addMember" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">' +
+      field('Student name','name','text','','Full name',true) + field('USN','usn','text','','University registration number') +
+      selectField('Team','team', d.teams.map(t => t.name), '', 'Select team', true) +
+      field('Year','year','text','','e.g. 2nd year') + field('Branch','branch','text','','e.g. CSE') +
+      field('Phone','phone','text','','') +
+      '<div class="lg:col-span-3"><button class="' + BTN.gold + '" type="submit">Add member</button></div></form>' +
+    '<div class="mt-8 overflow-x-auto"><table class="w-full text-left text-[15px]"><thead class="text-[12px] uppercase text-mutedink">' +
+      '<tr><th class="py-3 pr-4">Name</th><th class="py-3 pr-4">USN</th><th class="py-3 pr-4">Team</th><th class="py-3 pr-4">Added by</th><th class="py-3 pr-4">Status</th><th class="py-3">Actions</th></tr></thead><tbody>' +
+      (d.members.length ? d.members.map(m => '<tr class="border-t border-softline"><td class="py-3.5 pr-4 font-semibold text-navy">' + esc(m.name) + '</td>' +
+        '<td class="py-3.5 pr-4 text-mutedink">' + esc(m.usn || '—') + '</td><td class="py-3.5 pr-4 text-mutedink">' + esc(m.team) + '</td>' +
+        '<td class="py-3.5 pr-4 text-mutedink">' + esc(m.added_by || 'President') + '</td>' +
+        '<td class="py-3.5 pr-4"><span class="rounded-full px-2.5 py-1 text-[11px] font-bold uppercase ' + (m.status === 'pending' ? 'bg-gold/20 text-golddark' : 'bg-navy/10 text-navy/70') + '">' + esc(m.status || 'confirmed') + '</span></td>' +
+        '<td class="py-3.5"><div class="flex gap-3">' + (m.status === 'pending' ? '<button type="button" data-action="confirmMember" data-id="' + m.id + '" class="text-[12px] font-semibold text-gold">Confirm</button>' : '') +
+        '<button type="button" data-action="removeMember" data-id="' + m.id + '" class="text-[12px] font-semibold text-red-600">Delete</button></div></td></tr>').join('')
+        : '<tr><td colspan="6" class="py-8 text-center text-mutedink">No members yet — add students to a team to build the rosters.</td></tr>') +
+    '</tbody></table></div>');
+}
+function adminEvents() {
+  const d = state.data;
+  return adminCard('Event categories', 'Group events into arenas like Technical, Sports, E-Sports, Indoor, Cultural and Other.',
+    '<form data-form="addCategory" class="grid gap-5 sm:grid-cols-3">' + field('Category name','name','text','','e.g. Technical Events',true) +
+    field('Short description','description','text','','What this arena is about') + field('Mark','icon','text','','Emoji or keyword') +
+    '<div class="sm:col-span-3"><button class="' + BTN.gold + '" type="submit">Add category</button></div></form>' +
+    '<div class="mt-6 flex flex-wrap gap-3">' + d.categories.map(c => '<span class="inline-flex items-center gap-3 rounded-full border border-softline bg-white/70 px-4 py-2 text-[14px] font-semibold text-navy/80">' +
+      esc(c.icon || '•') + ' ' + esc(c.name) + '<span class="num text-[12px] text-mutedink">' + d.events.filter(e => e.category === c.name).length + ' events</span>' +
+      '<button type="button" data-action="removeCategory" data-id="' + c.id + '" class="text-red-600">✕</button></span>').join('') + '</div>') +
+  adminCard('Create and publish an event', 'Name it, set its points, rules, schedule, venue, coordinators and jury. Everything is editable later.',
+    '<form data-form="publishEvent" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">' +
+      field('Event name','name','text','','e.g. Hackathon',true) + selectField('Category','category', d.categories.map(c => c.name), '', 'Select category', true) +
+      field('Total points','points','number',10,'') + field('Schedule','schedule','text','','e.g. Day 2 · 10:00 AM') +
+      field('Venue','venue','text','','e.g. Seminar Hall') + selectField('Status','status', ['upcoming','live','completed'], 'upcoming', 'Upcoming') +
+      areaField('Description','description','','What the event is about','sm:col-span-2 lg:col-span-3') +
+      areaField('Rules & regulations','rules','','Team size, timings, judging criteria…','sm:col-span-2 lg:col-span-3') +
+      field('Student coordinators','student_coordinators','text','','') + field('Faculty coordinators','faculty_coordinators','text','','') +
+      field('Judges / jury','judges','text','','') + field('Prizes','prizes','text','','e.g. Trophy + certificates') +
+      '<div class="lg:col-span-3"><button class="' + BTN.gold + '" type="submit">Publish event</button></div></form>') +
+  adminCard('All events (' + d.events.length + ')', 'Tap any event to edit its details, status and result.',
+    '<div class="space-y-3">' + (d.events.length ? d.events.map(e => '<details class="rounded-2xl border border-softline bg-white/70 px-5 py-4">' +
+      '<summary class="flex cursor-pointer list-none flex-wrap items-center justify-between gap-4"><div class="min-w-0">' +
+      '<p class="truncate text-[16px] font-bold text-navy">' + esc(e.name) + '</p>' +
+      '<p class="text-[12px] uppercase text-mutedink">' + esc(e.category || '') + ' · ' + num(e.points) + ' pts · ' + esc(e.status) + '</p></div>' +
+      '<div class="flex flex-wrap gap-2">' + ['upcoming','live','completed'].map(s => '<button type="button" data-action="eventStatus" data-id="' + e.id + '" data-value="' + s + '" class="rounded-full px-3 py-1.5 text-[11px] font-bold uppercase ' +
+        (e.status === s ? 'bg-panel text-onpanel' : 'border border-softline text-mutedink') + '">' + s + '</button>').join('') +
+      '<button type="button" data-action="removeEvent" data-id="' + e.id + '" class="text-red-600">✕</button></div></summary>' +
+      '<form data-form="saveEvent" data-id="' + e.id + '" class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">' +
+        field('Points','points','number',e.points,'') + field('Schedule','schedule','text',e.schedule,'') + field('Venue','venue','text',e.venue,'') +
+        field('Student coordinators','student_coordinators','text',e.student_coordinators,'') + field('Faculty coordinators','faculty_coordinators','text',e.faculty_coordinators,'') +
+        field('Judges / jury','judges','text',e.judges,'') + field('Prizes','prizes','text',e.prizes,'') + field('Participants count','participants_count','number',e.participants_count,'') +
+        field('Result summary (winning team name wins the points)','result_summary','text',e.result_summary,'') +
+        areaField('Description','description',e.description,'','sm:col-span-2 lg:col-span-3') +
+        areaField('Rules & regulations','rules',e.rules,'','sm:col-span-2 lg:col-span-3') +
+        '<div class="lg:col-span-3"><button class="' + BTN.dark + '" type="submit">Save changes</button></div></form></details>').join('')
+      : empty('No events in this view','Create events above and they appear here instantly.')) + '</div>');
+}
+function adminResults() {
+  const d = state.data;
+  const names = d.teams.map(t => t.name);
+  return adminCard('Publish a result', 'Publishing updates the points table and marks the event as completed.',
+    '<form data-form="publishResult" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">' +
+      selectField('Event','event_name', d.events.map(e => e.name), '', 'Select event', true) +
+      selectField('1st place team','first_team', names, '', 'Winning team', true) +
+      selectField('2nd place team','second_team', names, '', 'Runner up') +
+      selectField('3rd place team','third_team', names, '', 'Third place') +
+      field('Points awarded','points_awarded','number',0,'Points added to the winner') +
+      areaField('Notes','notes','','Anything the campus should know','sm:col-span-2 lg:col-span-3') +
+      '<div class="lg:col-span-3"><button class="' + BTN.gold + '" type="submit">Publish result</button></div></form>' +
+    '<div class="mt-8 space-y-3">' + (d.results.length ? d.results.map(r => '<div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-softline bg-white/70 px-5 py-4">' +
+      '<div><p class="text-[16px] font-bold text-navy">' + esc(r.event_name) + '</p><p class="text-[12px] uppercase text-mutedink">🥇 ' + esc(r.first_team || '—') + ' · 🥈 ' + esc(r.second_team || '—') + ' · 🥉 ' + esc(r.third_team || '—') + '</p></div>' +
+      '<button type="button" data-action="removeResult" data-id="' + r.id + '" class="text-[12px] font-semibold text-red-600">Delete</button></div>').join('')
+      : empty('No results yet','Publish your first result above — points land on the team instantly.')) + '</div>');
+}
+function adminRegistrations() {
+  const d = state.data;
+  const byEvent = {};
+  d.registrations.forEach(r => { (byEvent[r.event_name] = byEvent[r.event_name] || []).push(r); });
+  return adminCard('Registrations (' + d.registrations.length + ')', 'Every student entry, with the event and team they signed up for.',
+    Object.keys(byEvent).length ? Object.keys(byEvent).map(ev => '<div class="mb-8"><p class="text-[14px] font-bold uppercase text-navy">' + esc(ev) + ' · ' + byEvent[ev].length + '</p>' +
+      '<div class="mt-3 space-y-3">' + byEvent[ev].map(r => '<div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-softline bg-white/70 px-5 py-4">' +
+        '<div><p class="text-[15px] font-semibold text-navy">' + esc(r.student_name) + ' <span class="text-mutedink">· ' + esc(r.usn || '—') + '</span></p>' +
+        '<p class="text-[12px] uppercase text-mutedink">' + esc(r.team || '—') + ' · ' + num(r.participants_count || 1) + ' participant(s)' + (r.contact ? ' · ' + esc(r.contact) : '') + '</p></div>' +
+        '<div class="flex flex-wrap items-center gap-2">' + ['registered','confirmed','waitlist'].map(s => '<button type="button" data-action="regStatus" data-id="' + r.id + '" data-value="' + s + '" class="rounded-full px-3 py-1.5 text-[11px] font-bold uppercase ' +
+          ((r.status || 'registered') === s ? 'bg-panel text-onpanel' : 'border border-softline text-mutedink') + '">' + s + '</button>').join('') +
+        '<button type="button" data-action="removeReg" data-id="' + r.id + '" class="text-[12px] font-semibold text-red-600">Delete</button></div></div>').join('') + '</div></div>').join('')
+      : empty('No registrations yet','Student entries submitted from the dashboard appear here instantly.'));
+}
+function adminContent() {
+  const d = state.data;
+  return adminCard('Publish an announcement', 'The campus sees it on the dashboard and the notice board instantly.',
+    '<form data-form="postAnnouncement" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">' + field('Title','title','text','','Headline',true) +
+    field('Category','category','text','General','General / Sports / Cultural') +
+    selectField('Pin to top','pinned', ['yes','no'], 'no', 'No') +
+    areaField('Message','body','','What should the campus know?','sm:col-span-2 lg:col-span-3') +
+    '<div class="lg:col-span-3"><button class="' + BTN.gold + '" type="submit">Publish announcement</button></div></form>' +
+    '<div class="mt-8 space-y-3">' + (d.announcements.length ? d.announcements.map(a => '<div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-softline bg-white/70 px-5 py-4">' +
+      '<div><p class="text-[16px] font-bold text-navy">' + esc(a.title) + '</p><p class="mt-1 text-[14px] text-mutedink">' + esc(a.body) + '</p></div>' +
+      '<div class="flex gap-3"><button type="button" data-action="pinAnnouncement" data-id="' + a.id + '" class="text-[12px] font-semibold text-gold">' + (a.pinned ? 'Unpin' : 'Pin') + '</button>' +
+      '<button type="button" data-action="removeAnnouncement" data-id="' + a.id + '" class="text-[12px] font-semibold text-red-600">Delete</button></div></div>').join('')
+      : empty('No announcements yet','Publish your first notice above.')) + '</div>') +
+  adminCard('Moderate the album (' + d.posts.length + ')', 'Approve or remove student uploads before the campus sees them.',
+    '<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">' + (d.posts.length ? d.posts.map(p => '<div class="overflow-hidden rounded-2xl border border-softline bg-white/70">' +
+      '<img src="' + esc(p.image_url) + '" alt="" class="h-36 w-full object-cover" />' +
+      '<div class="px-4 py-3"><p class="text-[14px] font-semibold text-navy">' + esc(p.uploader_name) + '</p>' +
+      '<div class="mt-2 flex gap-3"><button type="button" data-action="approvePost" data-id="' + p.id + '" class="text-[12px] font-semibold text-gold">' + (p.approved ? 'Unapprove' : 'Approve') + '</button>' +
+      '<button type="button" data-action="removePost" data-id="' + p.id + '" class="text-[12px] font-semibold text-red-600">Delete</button></div></div></div>').join('')
+      : empty('Nothing uploaded yet','Student uploads from the Memories page land here for moderation.')) + '</div>');
+}
+function adminSettings() {
+  const c = config();
+  return adminCard('Event settings', 'These details drive the landing page, the dashboard header and the footer.',
+    '<form data-form="saveSettings" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">' +
+      field('Event name','event_name','text',c.event_name,'') + field('College name','college_name','text',c.college_name,'') +
+      field('Location','location','text',c.location,'') + field('Tagline','tagline','text',c.tagline,'') +
+      field('Campaign name','campaign_name','text',c.campaign_name,'') + field('Campaign title','campaign_title','text',c.campaign_title,'') +
+      areaField('Fest intro','intro',c.intro,'','sm:col-span-2 lg:col-span-3') +
+      areaField('Campaign message','campaign_message',c.campaign_message,'','sm:col-span-2 lg:col-span-3') +
+      '<div class="lg:col-span-3"><button class="' + BTN.gold + '" type="submit">Save settings</button></div></form>') +
+  adminCard('Change the admin password', 'Only this device needs the new password to unlock the panel.',
+    '<form data-form="changePassword" class="grid gap-5 sm:grid-cols-3">' + field('Current password','current','password','','') +
+    field('New password','next','password','','') + field('Confirm new password','confirm','password','','') +
+    '<div class="sm:col-span-3"><button class="' + BTN.dark + '" type="submit">Update password</button></div></form>' +
+    (state.flash ? '<p class="mt-4 text-[15px] font-semibold text-gold">' + esc(state.flash) + '</p>' : ''));
+}
+
+/* ============================= 11. CAPTAIN ============================= */
+function captainGate() {
+  const d = state.data;
+  return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-md px-5"><div class="rounded-[2rem] border border-gold/30 bg-white/80 p-8 text-center">' +
+    '<img src="' + A.logo + '" alt="PIXELS 2k26" class="mx-auto h-16 w-auto" />' +
+    '<h1 class="mt-6 text-2xl font-black text-navy">Team captain panel</h1>' +
+    '<p class="mt-2 text-[15px] text-mutedink">Enter the unique team password issued by the president to open your team panel.</p>' +
+    '<form data-form="captainLogin" class="mt-6"><input name="password" type="password" placeholder="Team password" class="h-11 w-full rounded-md border border-softline bg-white px-3 text-center text-[15px] text-navy" required />' +
+    '<button class="mt-4 w-full rounded-full bg-gradient-to-r from-gold to-goldsoft py-3.5 text-[15px] font-semibold text-panel" type="submit">Open my team panel</button>' +
+    (state.flash ? '<p class="mt-3 text-[15px] font-semibold text-red-600">' + esc(state.flash) + '</p>' : '') + '</form>' +
+    '<p class="mt-5 text-[13px] text-mutedink">' + d.teams.length + ' teams competing · passwords issued by the president</p>' +
+  '</div></div></main>' + tabbar();
+}
+const CAPTAIN_TABS = [['overview','Overview'],['members','Members'],['registrations','Registrations'],['notice','Team notice']];
+function captain() {
+  const team = teamByName(captainTeam());
+  if (!team) return captainGate();
+  const d = state.data, tab = state.captainTab || 'overview';
+  const roster = d.members.filter(m => m.team === team.name);
+  const regs = d.registrations.filter(r => norm(r.team) === norm(team.name));
+  const ranked = standings();
+  const me = ranked.find(t => t.name === team.name) || { points: 0, rank: ranked.length };
+
+  const body =
+    (tab === 'overview' ? '<div class="space-y-8"><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">' +
+      tile('Team', team.name) + tile('Team points', num(team.total_points), true) + tile('Rank', '#' + me.rank) + tile('Members', roster.length) + '</div>' +
+      card(section('Leader board','Where every team stands') + '<div class="mt-5">' + standingsBlock(ranked) + '</div>') + '</div>' : '') +
+    (tab === 'members' ? adminCard(team.name + ' roster (' + roster.length + ')', 'Confirmed members of your team. New students you add wait for the president to confirm.',
+      '<form data-form="captainMember" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">' + field('Student name','name','text','','Full name',true) +
+      field('USN','usn','text','','University registration number') + field('Year','year','text','','') + field('Branch','branch','text','','') +
+      field('Phone','phone','text','','') + '<div class="lg:col-span-3"><button class="' + BTN.gold + '" type="submit">Add to my team</button></div></form>' +
+      '<div class="mt-8 space-y-3">' + (roster.length ? roster.map(m => '<div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-softline bg-white/70 px-5 py-4">' +
+        '<div><p class="text-[15px] font-semibold text-navy">' + esc(m.name) + '</p><p class="text-[12px] uppercase text-mutedink">' + esc(m.usn || '—') + ' · ' + esc(m.role || 'member') + '</p></div>' +
+        '<span class="rounded-full px-2.5 py-1 text-[11px] font-bold uppercase ' + (m.status === 'pending' ? 'bg-gold/20 text-golddark' : 'bg-navy/10 text-navy/70') + '">' + esc(m.status || 'confirmed') + '</span></div>').join('')
+        : empty('No roster yet','Add your first student above — the president confirms them.')) + '</div>') : '') +
+    (tab === 'registrations' ? adminCard('Registrations (' + regs.length + ')', regs.length + ' entries from your team',
+      regs.length ? '<div class="space-y-3">' + regs.map(r => '<div class="rounded-2xl border border-softline bg-white/70 px-5 py-4">' +
+        '<p class="text-[15px] font-semibold text-navy">' + esc(r.student_name) + ' <span class="text-mutedink">· ' + esc(r.event_name) + '</span></p>' +
+        '<p class="text-[12px] uppercase text-mutedink">' + esc(r.usn || '—') + ' · ' + num(r.participants_count || 1) + ' participant(s) · ' + esc(r.status || 'registered') + '</p></div>').join('') + '</div>'
+        : empty('No registrations from your team yet','Students register from the dashboard — everything from your team shows up here.')) : '') +
+    (tab === 'notice' ? adminCard('Post a team notice', 'Announcements you publish appear on the dashboard notice board with your name.',
+      '<form data-form="captainNotice" class="grid gap-5 sm:grid-cols-2">' + field('Title','title','text','','Team update',true) +
+      field('Category','category','text','General','General / Sports / Cultural') +
+      areaField('Message','body','','What should your team know?','sm:col-span-2') +
+      '<div class="sm:col-span-2"><button class="' + BTN.gold + '" type="submit">Publish notice</button></div></form>' +
+      '<div class="mt-8 space-y-3">' + (d.announcements.filter(a => norm(a.team) === norm(team.name)).length
+        ? d.announcements.filter(a => norm(a.team) === norm(team.name)).map(a => '<div class="rounded-2xl border border-softline bg-white/70 px-5 py-4"><p class="text-[15px] font-bold text-navy">' + esc(a.title) + '</p><p class="mt-1 text-[14px] text-mutedink">' + esc(a.body) + '</p></div>').join('')
+        : empty('No notices from your team yet','Post your first team update above.')) + '</div>') : '');
+
+  return nav() + header('Team captain panel', team.name + ' · captain control room',
+      'Your team roster, entries, live score and the standings — everything you add is highlighted for the president to confirm.',
+      '<a href="#/dashboard" class="' + BTN.ghost + '">Common dashboard</a><button type="button" data-action="captainLogout" class="' + BTN.dark + '">Log out</button>') +
+  '<div class="mx-auto max-w-7xl px-5 py-8 lg:px-8"><div class="scroll-hide flex flex-wrap gap-2">' +
+    CAPTAIN_TABS.map(t => '<button type="button" data-action="captainTab" data-value="' + t[0] + '" class="rounded-full px-4 py-2.5 text-[14px] font-semibold ' +
+      (tab === t[0] ? 'bg-panel text-onpanel' : 'border border-softline text-navy/70') + '">' + t[1] + '</button>').join('') + '</div></div>' +
+  '<div class="mx-auto max-w-7xl space-y-8 px-5 py-8 lg:px-8 lg:py-12">' + body + '</div>' + tabbar();
+}
+
+/* ============================== 12. INTRO =============================== */
+const PIXELS_LOGO = 'https://media.base44.com/images/public/6ac22db521e549c2c4070b59/2ff2f9183_image.png';
+const PIXELS_LOGO_MAIN = 'https://media.base44.com/images/public/6ac22db521e549c2c4070b59/264991ff2_image.png';
+const COLLEGE_LOGO_INTRO = 'https://media.base44.com/images/public/6ac22db521e549c2c4070b59/05f7e66a1_image.png';
+const INTRO_HERO_VIDEO = 'https://media.base44.com/videos/public/6ac22db521e549c2c4070b59/5e9fbb6e8_WhatsAppVideo2026-10-04at51808PM.mp4';
+const SHOWCASE_IMAGES = [
+  PIXELS_LOGO_MAIN, COLLEGE_LOGO_INTRO,
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/30025db09_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/a37a78d17_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/583d0599f_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/4be2e6499_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/10e6f1f5f_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/a1933ace3_image.png',
+  'https://media.base44.com/images/public/6ac22db521e549c2c4070b59/f4dc52f1d_image.png',
+  'https://media.base44.com/images/public/6ac22db521e549c2c4070b59/e2a4985ec_image.png'
+];
+const SHOWCASE_LABELS = ['PIXELS 2k26','Navodaya Institute of Technology','Our Campus','Cultural Arena','Team Workshops','Sports Arena','E-Sports Arena','Open Arena','Campus Skyline','The Four Teams'];
+const CIRCLE_IMAGES = [
+  COLLEGE_LOGO_INTRO,
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/30025db09_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/a37a78d17_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/583d0599f_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/4be2e6499_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/10e6f1f5f_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/a1933ace3_image.png',
+  'https://media.base44.com/images/public/6ac22db521e549c2c4070b59/f4dc52f1d_image.png',
+  'https://media.base44.com/images/public/6ac22db521e549c2c4070b59/e2a4985ec_image.png',
+  'https://media.base44.com/images/public/user_6968ed6519d1e379d64e34aa/fe28602db_image.png'
+];
+const INTRO_TYPE_TEXT = 'PIXELS 2k26 is the intra-college fest of Navodaya Institute of Technology, Raichur — 35+ events across technical, sports, e-sports, indoor, cultural and open arenas, fought out by four teams over one unforgettable month.';
+const LIKE_KEY = 'pixels2k26_likes';
+
+function introView() {
+  return '<div id="intro-screen">' +
+    '<div class="bg-decoration"></div>' +
+    '<div class="top-controls">' + themeBtn() +
+      '<button id="skip-btn" class="skip-btn" type="button"><span>Skip Intro</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>' +
+    '</div>' +
+    '<div id="animation-stage" class="viewport">' +
+      '<div id="gallery"></div>' +
+      '<div id="logo-center" class="logo-center">' +
+        '<div class="logo-ring logo-ring-3"></div><div class="logo-ring logo-ring-2"></div><div class="logo-ring logo-ring-1"></div>' +
+        '<div class="logo-circle"><img id="center-logo-img" src="' + PIXELS_LOGO + '" alt="PIXELS 2k26"></div>' +
+      '</div>' +
+      '<div id="showcase-container"></div>' +
+      '<div id="showcase-text" class="showcase-text">Where every pixel becomes a memory at <span class="accent">PIXELS 2k26</span></div>' +
+      '<div id="phase-text" class="phase-text">Initializing</div>' +
+      '<div class="progress-container"><div id="progress-fill" class="progress-fill"></div></div>' +
+    '</div>' +
+    '<div id="hero-stage" class="hero-stage">' +
+      '<div class="hero-content">' +
+        '<h1 class="hero-title">PIXELS <span class="accent">2k26</span></h1>' +
+        '<p class="hero-tagline">Where every pixel becomes a memory</p>' +
+        '<div class="typing-container"><p id="typing-text" class="typing-text"></p></div>' +
+        '<div class="hero-badge">35+ Events &middot; 4 Teams &middot; 1 Month</div>' +
+        '<button id="enter-btn" class="enter-btn" type="button"><span>Enter PIXELS 2k26</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>' +
+      '</div>' +
+      '<button id="hero-scroll-btn" class="hero-scroll-btn" type="button" aria-label="Scroll down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button>' +
+      '<div class="hero-video-card" id="hero-video-card">' +
+        '<video id="hero-video" src="' + INTRO_HERO_VIDEO + '" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>' +
+        '<button id="like-btn" class="like-btn" type="button" aria-label="Like"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span id="like-count">0</span></button>' +
+      '</div>' +
+      '<div id="campaign-footnote" class="campaign-footnote">Make <strong>PIXELS 2k26</strong> the grandest edition yet — <span class="vote">vote <strong>Revan Siddheshwar</strong> for President</span> and carry every team to the best memories of the year.</div>' +
+    '</div>' +
+  '</div>';
+}
+
+let introTimeline = null;
+let introCleanup = null;
+
+function initIntro() {
+  const byId = (id) => document.getElementById(id);
+  const gallery = byId('gallery');
+  const showcaseContainer = byId('showcase-container');
+  const logoCenter = byId('logo-center');
+  const phaseText = byId('phase-text');
+  const progressFill = byId('progress-fill');
+  const animationStage = byId('animation-stage');
+  const heroStage = byId('hero-stage');
+  const typingText = byId('typing-text');
+  const enterBtn = byId('enter-btn');
+  const skipBtn = byId('skip-btn');
+  const showcaseText = byId('showcase-text');
+  const introScreen = byId('intro-screen');
+  const campaignFootnote = byId('campaign-footnote');
+  const heroScrollBtn = byId('hero-scroll-btn');
+  const heroVideo = byId('hero-video');
+  const likeBtn = byId('like-btn');
+  const likeCount = byId('like-count');
+  const gsap = window.gsap;
+  const TextPlugin = window.TextPlugin;
+
+  /* Likes (swap in a real database later — the helpers are already async) */
+  const getLikes = async () => { try { return parseInt(localStorage.getItem(LIKE_KEY) || '0', 10) || 0; } catch (e) { return 0; } };
+  const addLike = async () => { const n = (await getLikes()) + 1; try { localStorage.setItem(LIKE_KEY, String(n)); } catch (e) {} return n; };
+  getLikes().then(n => { likeCount.textContent = n; });
+  const onLike = () => { addLike().then(n => { likeCount.textContent = n; likeBtn.classList.add('liked'); }); };
+  likeBtn.addEventListener('click', onLike);
+
+  /* Build circle cards — every image used exactly once (no repeats) */
+  const circleCards = [];
+  for (let i = 0; i < CIRCLE_IMAGES.length; i++) {
+    const card = document.createElement('div');
+    card.className = 'px-card';
+    const img = document.createElement('img');
+    img.src = CIRCLE_IMAGES[i];
+    img.alt = 'PIXELS 2k26';
+    card.appendChild(img);
+    gallery.appendChild(card);
+    circleCards.push(card);
+  }
+
+  /* Build showcase cards: first is logo-style, rest are image cards */
+  const showcaseCards = [];
+  SHOWCASE_IMAGES.forEach((src, index) => {
+    if (index === 0) {
+      const card = document.createElement('div');
+      card.className = 'showcase-logo-card';
+      const circle = document.createElement('div');
+      circle.className = 'showcase-logo-circle';
+      const img = document.createElement('img');
+      img.src = src; img.alt = 'PIXELS 2k26 Logo';
+      circle.appendChild(img); card.appendChild(circle);
+      showcaseContainer.appendChild(card); showcaseCards.push(card);
+    } else {
+      const card = document.createElement('div');
+      card.className = 'showcase-card';
+      const img = document.createElement('img');
+      img.src = src; img.alt = SHOWCASE_LABELS[index];
+      card.appendChild(img);
+      showcaseContainer.appendChild(card); showcaseCards.push(card);
+    }
+  });
+
+  /* Safety net if the animation library is unavailable */
+  const revealHeroNow = () => {
+    animationStage.style.display = 'none';
+    skipBtn.style.display = 'none';
+    heroStage.style.opacity = '1';
+    heroStage.style.pointerEvents = 'auto';
+    ['.hero-title', '.hero-tagline', '.hero-badge', '.hero-video-card'].forEach(sel => { const el = document.querySelector(sel); if (el) el.style.opacity = '1'; });
+    typingText.textContent = INTRO_TYPE_TEXT; typingText.style.opacity = '1';
+    campaignFootnote.style.opacity = '1';
+  };
+
+  let enterHandler = null, scrollHandler = null, visibilityHandler = null, clickHandler = null, keyHandler = null, touchHandler = null, stageScrollHandler = null, safety = null;
+  const ambient = [];
+
+  if (!gsap) {
+    revealHeroNow();
+    enterHandler = () => enterApp();
+    enterBtn.addEventListener('click', enterHandler);
+    introCleanup = () => { enterBtn.removeEventListener('click', enterHandler); };
+    return;
+  }
+
+  if (TextPlugin) gsap.registerPlugin(TextPlugin);
+  gsap.set('.logo-ring', { xPercent: -50, yPercent: -50 });
+  gsap.set(logoCenter, { xPercent: -50, yPercent: -50, scale: 0, opacity: 0 });
+  gsap.set('.showcase-card', { transformPerspective: 800 });
+
+  const T = 0; // start immediately (no loading screen)
+  const tl = gsap.timeline();
+  introTimeline = tl;
+
+  /* Phase: Initializing + cards materialize from depth */
+  tl.to(phaseText, { opacity: 1, duration: .3 }, T + .3);
+  tl.to(phaseText, { text: 'Initializing', duration: .4 }, T + .3);
+  tl.set(circleCards, {
+    x: () => (Math.random() - .5) * window.innerWidth * 1.8,
+    y: () => (Math.random() - .5) * window.innerHeight * 1.8,
+    z: () => (Math.random() - .5) * 1000,
+    rotationX: () => Math.random() * 360,
+    rotationY: () => Math.random() * 360,
+    rotationZ: () => Math.random() * 180,
+    opacity: 0, scale: .4
+  });
+  tl.to(circleCards, { opacity: 1, scale: 1, duration: 2.5, stagger: { each: .06, from: 'random' }, ease: 'power2.out' }, T + .5);
+  tl.to(progressFill, { width: '15%', duration: 3.5, ease: 'power1.inOut' }, T);
+
+  /* Phase: Aligning horizontally */
+  tl.to(phaseText, { text: 'Aligning the Arenas', duration: .4 }, T + 3.5);
+  const lineSpacing = window.innerWidth < 768 ? 50 : 78;
+  tl.to(circleCards, {
+    x: i => (i - (CIRCLE_IMAGES.length - 1) / 2) * lineSpacing,
+    y: 0, z: 0, rotationX: 0, rotationY: 0, rotationZ: 0,
+    duration: 2.5, stagger: { each: .04, from: 'center' }, ease: 'power3.inOut'
+  }, T + 3.5);
+  tl.to(progressFill, { width: '30%', duration: 2.5, ease: 'power1.inOut' }, T + 3.5);
+
+  /* Phase: Forming the orbit */
+  tl.to(phaseText, { text: 'Forming the Orbit', duration: .4 }, T + 6);
+  const cR = window.innerWidth < 768 ? 140 : 240;
+  tl.to(circleCards, {
+    x: i => { const a = (i / CIRCLE_IMAGES.length) * Math.PI * 2 - Math.PI / 2; return Math.cos(a) * cR; },
+    y: i => { const a = (i / CIRCLE_IMAGES.length) * Math.PI * 2 - Math.PI / 2; return Math.sin(a) * cR * .4; },
+    z: i => { const a = (i / CIRCLE_IMAGES.length) * Math.PI * 2 - Math.PI / 2; return Math.sin(a) * cR * .5; },
+    rotationY: i => -(i / CIRCLE_IMAGES.length) * 360,
+    rotationX: -8, duration: 3, ease: 'expo.inOut'
+  }, T + 6);
+  tl.to(logoCenter, { opacity: 1, scale: 1, duration: 1.2, ease: 'back.out(1.7)' }, T + 7.5);
+  tl.to(progressFill, { width: '50%', duration: 3, ease: 'power1.inOut' }, T + 6);
+  tl.to(circleCards, { rotationY: i => -(i / CIRCLE_IMAGES.length) * 360 - 180, duration: 1.2, ease: 'power2.inOut' }, T + 9);
+
+  /* Phase: Preparing showcase */
+  tl.to(phaseText, { text: 'Showcasing the Arenas', duration: .4 }, T + 9);
+  tl.to(circleCards, { opacity: 0, scale: .3, duration: .6, ease: 'power2.in', stagger: { each: .02, from: 'edges' } }, T + 10);
+  tl.to(logoCenter, { opacity: 0, scale: .3, duration: .5, ease: 'power2.in' }, T + 10.1);
+  tl.to(phaseText, { opacity: 0, duration: .3 }, T + 10.3);
+  tl.to(progressFill, { width: '60%', duration: 1.5, ease: 'power1.inOut' }, T + 9);
+
+  /* Showcase text */
+  tl.to('#showcase-text', { opacity: 1, duration: .5, ease: 'power2.out' }, T + 10.5);
+  tl.to('#showcase-text', { opacity: 0, duration: .4, ease: 'power2.in' }, T + 24.3);
+
+  /* Showcase: 10 cards one by one */
+  SHOWCASE_IMAGES.forEach((item, index) => {
+    const card = showcaseCards[index];
+    const start = T + 10.5 + index * 1.4;
+    const flyOutDir = index % 2 === 0 ? -1 : 1;
+    tl.to(phaseText, { opacity: 1, duration: .2 }, start);
+    tl.to(phaseText, { text: SHOWCASE_LABELS[index], duration: .3 }, start);
+    tl.fromTo(card,
+      { x: 0, y: 0, z: -1500, rotationY: 220, rotationX: 20, opacity: 0, scale: .25 },
+      { x: 0, y: 0, z: 0, rotationY: 0, rotationX: 0, opacity: 1, scale: 1, duration: .55, ease: 'back.out(1.4)' }, start);
+    tl.to(card, { y: -8, rotationX: 3, duration: .3, ease: 'sine.inOut' }, start + .55);
+    tl.to(card, { x: flyOutDir * window.innerWidth * .8, z: -1000, rotationY: flyOutDir * -120, rotationX: flyOutDir * 15, rotationZ: flyOutDir * 25, opacity: 0, scale: .4, duration: .4, ease: 'power3.in' }, start + .65);
+    tl.to(phaseText, { opacity: 0, duration: .2 }, start + .8);
+    tl.to(progressFill, { width: (60 + (index + 1) * 4) + '%', duration: 1, ease: 'power1.inOut' }, start);
+  });
+
+  /* Transition to hero */
+  tl.set(skipBtn, { display: 'none' }, T + 25);
+  tl.to(progressFill, { width: '100%', duration: .4, ease: 'power2.inOut' }, T + 24.5);
+  tl.to(animationStage, { opacity: 0, duration: .5, ease: 'power2.inOut' }, T + 24.5);
+  tl.set(animationStage, { display: 'none' }, T + 25);
+  tl.to(heroStage, { opacity: 1, duration: .5, ease: 'power2.out' }, T + 24.5);
+  tl.set(heroStage, { pointerEvents: 'auto' }, T + 25);
+
+  /* Hero content reveal */
+  tl.to('.hero-title', { opacity: 1, duration: .6, ease: 'power2.out' }, T + 25.2);
+  tl.to('.hero-tagline', { opacity: 1, duration: .5, ease: 'power2.out' }, T + 25.6);
+  tl.to(typingText, { opacity: 1, duration: .3 }, T + 26);
+  tl.call(() => typingText.classList.add('typing'), null, T + 26);
+  tl.to(typingText, { text: INTRO_TYPE_TEXT, duration: 3, ease: 'none' }, T + 26.2);
+  tl.to('.hero-badge', { opacity: 1, duration: .5, ease: 'power2.out' }, T + 29);
+  tl.to('#enter-btn', { opacity: 1, duration: .5, ease: 'back.out(1.4)' }, T + 29.5);
+  tl.to('.hero-video-card', { opacity: 1, duration: .6, ease: 'power2.out' }, T + 26.5);
+  tl.call(() => { introScreen.scrollTop = 0; playVisibleVideo(); }, null, T + 27.1);
+  tl.to(campaignFootnote, { opacity: 1, duration: .6, ease: 'power2.out' }, T + 30.1);
+
+  /* Ambient loops */
+  ambient.push(gsap.to('#enter-btn', { y: -6, duration: 1.5, repeat: -1, yoyo: true, ease: 'sine.inOut' }));
+  ambient.push(gsap.to('.hero-video-card', { y: -8, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 27 }));
+
+  /* Skip: jump straight to the hero stage */
+  const skipToHero = () => { skipBtn.removeEventListener('click', skipToHero); tl.progress(1); };
+  skipBtn.addEventListener('click', skipToHero);
+
+  /* Mobile: floating scroll-down button scrolls to the video */
+  scrollHandler = () => { const c = byId('hero-video-card'); if (c) c.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+  heroScrollBtn.addEventListener('click', scrollHandler);
+
+  /* Mobile browsers allow muted autoplay; audio unlocks on a user gesture. */
+  let soundEnabled = false, videoStarting = false;
+  const videoIsVisible = () => {
+    const rect = heroVideo.getBoundingClientRect();
+    return getComputedStyle(heroStage).opacity !== '0' &&
+      document.visibilityState === 'visible' && rect.bottom > 0 && rect.top < window.innerHeight;
+  };
+  function playVisibleVideo() {
+    if (!videoIsVisible() || !heroVideo.paused || videoStarting) return;
+    videoStarting = true;
+    heroVideo.muted = !soundEnabled;
+    heroVideo.play().catch(() => { heroVideo.muted = true; return heroVideo.play().catch(() => {}); }).finally(() => { videoStarting = false; });
+  }
+  const enableVideoSound = () => {
+    if (soundEnabled) return;
+    soundEnabled = true;
+    heroVideo.muted = false;
+    heroVideo.play().catch(() => { heroVideo.muted = true; playVisibleVideo(); });
+  };
+  const onLoaded = () => playVisibleVideo();
+  heroVideo.addEventListener('loadeddata', onLoaded);
+  heroVideo.addEventListener('canplay', onLoaded);
+  const observer = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) playVisibleVideo(); }, { threshold: 0.05 });
+  observer.observe(heroVideo);
+  stageScrollHandler = () => playVisibleVideo();
+  heroStage.addEventListener('scroll', stageScrollHandler, { passive: true });
+  visibilityHandler = () => playVisibleVideo();
+  document.addEventListener('visibilitychange', visibilityHandler);
+  clickHandler = () => enableVideoSound();
+  touchHandler = () => enableVideoSound();
+  keyHandler = () => enableVideoSound();
+  window.addEventListener('click', clickHandler);
+  window.addEventListener('touchend', touchHandler, { passive: true });
+  window.addEventListener('keydown', keyHandler);
+
+  /* Enter: fade the hero out, then open the landing page */
+  enterHandler = () => {
+    heroStage.style.transition = 'opacity .4s ease';
+    heroStage.style.opacity = '0';
+    setTimeout(() => enterApp(), 400);
+  };
+  enterBtn.addEventListener('click', enterHandler);
+
+  /* Safety: if something stalls, jump straight to the hero stage after 30s */
+  safety = setTimeout(() => { if (getComputedStyle(heroStage).opacity === '0') skipToHero(); }, 30000);
+
+  introCleanup = () => {
+    clearTimeout(safety);
+    tl.kill();
+    ambient.forEach(t => t.kill());
+    observer.disconnect();
+    skipBtn.removeEventListener('click', skipToHero);
+    heroScrollBtn.removeEventListener('click', scrollHandler);
+    heroVideo.removeEventListener('loadeddata', onLoaded);
+    heroVideo.removeEventListener('canplay', onLoaded);
+    heroStage.removeEventListener('scroll', stageScrollHandler);
+    document.removeEventListener('visibilitychange', visibilityHandler);
+    window.removeEventListener('click', clickHandler);
+    window.removeEventListener('touchend', touchHandler);
+    window.removeEventListener('keydown', keyHandler);
+    enterBtn.removeEventListener('click', enterHandler);
+    likeBtn.removeEventListener('click', onLike);
+  };
+}
+
+function stopIntro() {
+  if (introCleanup) { try { introCleanup(); } catch (e) {} introCleanup = null; }
+  if (introTimeline) { introTimeline = null; }
+}
+
+function enterApp() {
+  try { sessionStorage.setItem(KEYS.intro, '1'); } catch (e) {}
+  state.entered = true;
+  render();
+}
+
+function introDone() {
+  if (state.entered) return true;
+  try { return sessionStorage.getItem(KEYS.intro) === '1'; } catch (e) { return false; }
+}
+
+/* ============================== 13. ROUTER ============================== */
+function view() {
+  const r = state.route;
+  if (!r[0] && !introDone()) return introView();
+  if (!r[0]) return landing();
+  switch (r[0]) {
+    case 'dashboard': return dashboard();
+    case 'journey': return journey();
+    case 'events': return r[1] ? eventDetail(r[1]) : events();
+    case 'teams': return r[1] ? teamDetail(r[1]) : teams();
+    case 'gallery': return gallery();
+    case 'feed': return feed();
+    case 'announcements': return announcements();
+    case 'admin': return admin();
+    case 'captain': return captain();
+    default: return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-3xl px-5">' + empty('Page not found','That page does not exist in PIXELS 2k26 — use the menu to find your way.') + '</div></main>' + tabbar();
+  }
+}
+async function render() {
+  state.route = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
+  const showIntro = !state.route[0] && !introDone();
+  state.data = await DB.all();
+  if (!state.data.config.length) { await seed(); state.data = await DB.all(); }
+  stopIntro(); /* only one intro timeline can ever be live */
+  document.getElementById('app').innerHTML = view();
+  window.scrollTo(0, 0);
+  if (showIntro) initIntro(); else bindVideos();
+}
+function bindVideos() {
+  document.querySelectorAll('video').forEach(v => { v.muted = true; v.play().catch(() => {}); });
+}
+const refresh = (flash) => { state.flash = flash || ''; render().then(() => { state.flash = ''; }); };
+
+/* ============================== 14. THEME ============================== */
+function setTheme(dark) {
+  document.body.classList.toggle('theme-dark', dark);
+  try { localStorage.setItem(KEYS.theme, dark ? 'dark' : 'light'); } catch (e) {}
+}
+function initTheme() {
+  let saved = 'light';
+  try { saved = localStorage.getItem(KEYS.theme) || 'light'; } catch (e) {}
+  setTheme(saved === 'dark');
+}
+
+/* ============================== 15. ACTIONS ============================ */
+const FORMS = {
+  async register(data) {
+    const ev = eventByName(data.event_name);
+    await DB.create('registrations', { ...data, participants_count: num(data.participants_count) || 1, category: ev ? ev.category : '', status: 'registered' });
+    localStorage.setItem(KEYS.student, JSON.stringify({ name: data.student_name, usn: data.usn, team: data.team }));
+    refresh('Registration recorded');
+  },
+  async student(data) {
+    localStorage.setItem(KEYS.student, JSON.stringify({ name: data.name, usn: data.usn, team: data.team }));
+    refresh('Saved on this device');
+  },
+  async photo(data, form) {
+    const file = form.querySelector('input[type="file"]').files[0];
+    let url = data.image_url || '';
+    if (file) url = await uploader.upload(file);
+    if (!url) { alert('Add a photo or paste an image link.'); return; }
+    await DB.create('posts', { image_url: url, caption: data.caption, uploader_name: data.uploader_name, uploader_usn: data.uploader_usn, team: data.team, venue: data.venue, likes: 0, approved: true });
+    refresh('Photo added to the album');
+  },
+  async adminLogin(data) {
+    if (data.password === (config().admin_password || 'revan2k26')) { localStorage.setItem(KEYS.admin, '1'); refresh(); }
+    else { state.flash = 'Incorrect password — try again.'; render(); }
+  },
+  async captainLogin(data) {
+    const t = state.data.teams.find(x => (x.captain_password || '').toUpperCase() === String(data.password || '').toUpperCase());
+    if (t) { localStorage.setItem(KEYS.captain, t.name); refresh(); }
+    else { state.flash = 'That password does not match any team. Ask the president for your team password.'; render(); }
+  },
+  async addTeam(data) {
+    await DB.create('teams', { ...data, slug: String(data.name).toLowerCase().replace(/[^a-z0-9]+/g, '-'), total_points: 0, order_index: state.data.teams.length, captain_password: (String(data.name).slice(0, 3).toUpperCase() + '-' + Math.random().toString(36).slice(2, 6).toUpperCase()) });
+    refresh('Team created');
+  },
+  async saveTeam(data, form) {
+    await DB.update('teams', form.dataset.id, { ...data, total_points: num(data.total_points) });
+    refresh('Team updated');
+  },
+  async addMember(data) {
+    await DB.create('members', { ...data, role: 'member', status: 'confirmed', added_by: 'President' });
+    refresh('Member added');
+  },
+  async addCategory(data) {
+    await DB.create('categories', { ...data, slug: String(data.name).toLowerCase().replace(/[^a-z0-9]+/g, '-'), order_index: state.data.categories.length });
+    refresh('Category added');
+  },
+  async publishEvent(data) {
+    await DB.create('events', { ...data, points: num(data.points), order_index: state.data.events.length });
+    refresh('Event published');
+  },
+  async saveEvent(data, form) {
+    await DB.update('events', form.dataset.id, { ...data, points: num(data.points), participants_count: num(data.participants_count) });
+    refresh('Event saved');
+  },
+  async publishResult(data) {
+    const team = teamByName(data.first_team);
+    await DB.create('results', { ...data, points_awarded: num(data.points_awarded) });
+    if (team) await DB.update('teams', team.id, { total_points: num(team.total_points) + num(team.points) });
+    const ev = eventByName(data.event_name);
+    if (ev) await DB.update('events', ev.id, { status: 'completed', result_summary: data.first_team });
+    refresh('Result published and points awarded');
+  },
+  async postAnnouncement(data) {
+    await DB.create('announcements', { ...data, pinned: data.pinned === 'yes', author_name: 'President', author_role: 'admin', team: '' });
+    refresh('Announcement published');
+  },
+  async captainMember(data) {
+    await DB.create('members', { ...data, team: captainTeam(), role: 'member', status: 'pending', added_by: captainTeam() + ' captain' });
+    refresh('Member added — waiting for the president to confirm');
+  },
+  async captainNotice(data) {
+    await DB.create('announcements', { ...data, pinned: false, author_name: captainTeam() + ' captain', author_role: 'captain', team: captainTeam() });
+    refresh('Notice published');
+  },
+  async saveSettings(data) {
+    await DB.update('config', config().id, data);
+    refresh('Settings saved');
+  },
+  async changePassword(data) {
+    if (data.current !== (config().admin_password || 'revan2k26')) { state.flash = 'Current password is incorrect.'; render(); return; }
+    if (!data.next || data.next !== data.confirm) { state.flash = 'New passwords do not match.'; render(); return; }
+    await DB.update('config', config().id, { admin_password: data.next });
+    refresh('Admin password updated');
+  }
+};
+const ACTIONS = {
+  async menu() { document.getElementById('drawer').classList.toggle('hidden'); },
+  async install() {
+    /* Once the Android build exists, APK_URL at the top of this file makes this
+       button download the app instead of using the browser install prompt. */
+    if (APK_URL) { window.location.href = APK_URL; return; }
+    if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt = null; return; }
+    alert('To install: open ' + APP_URL + ' in Chrome on Android, tap the ⋮ menu, then choose “Install app” or “Add to Home screen”.');
+  },
+  async adminLogout() { localStorage.removeItem(KEYS.admin); refresh(); },
+  async captainLogout() { localStorage.removeItem(KEYS.captain); refresh(); },
+  async adminTab(el) { state.adminTab = el.dataset.value; render(); },
+  async captainTab(el) { state.captainTab = el.dataset.value; render(); },
+  async filter(el) { state.filterCat = el.dataset.value; render(); },
+  async newPass(el) {
+    const t = state.data.teams.find(x => x.id === el.dataset.id);
+    await DB.update('teams', t.id, { captain_password: (t.name.slice(0, 3).toUpperCase() + '-' + Math.random().toString(36).slice(2, 6).toUpperCase()) });
+    refresh('New captain password generated');
+  },
+  async removeTeam(el) { if (confirm('Delete this team?')) { await DB.remove('teams', el.dataset.id); refresh(); } },
+  async removeMember(el) { await DB.remove('members', el.dataset.id); refresh(); },
+  async confirmMember(el) { await DB.update('members', el.dataset.id, { status: 'confirmed' }); refresh('Member confirmed'); },
+  async removeCategory(el) { await DB.remove('categories', el.dataset.id); refresh(); },
+  async removeEvent(el) { if (confirm('Delete this event?')) { await DB.remove('events', el.dataset.id); refresh(); } },
+  async eventStatus(el) { await DB.update('events', el.dataset.id, { status: el.dataset.value }); refresh(); },
+  async removeResult(el) { await DB.remove('results', el.dataset.id); refresh(); },
+  async regStatus(el) { await DB.update('registrations', el.dataset.id, { status: el.dataset.value }); refresh(); },
+  async removeReg(el) { await DB.remove('registrations', el.dataset.id); refresh(); },
+  async pinAnnouncement(el) {
+    const a = state.data.announcements.find(x => x.id === el.dataset.id);
+    await DB.update('announcements', a.id, { pinned: !a.pinned }); refresh();
+  },
+  async removeAnnouncement(el) { await DB.remove('announcements', el.dataset.id); refresh(); },
+  async approvePost(el) {
+    const p = state.data.posts.find(x => x.id === el.dataset.id);
+    await DB.update('posts', p.id, { approved: !p.approved }); refresh();
+  },
+  async removePost(el) { await DB.remove('posts', el.dataset.id); refresh(); },
+  async like(el) {
+    const p = state.data.posts.find(x => x.id === el.dataset.id);
+    await DB.update('posts', p.id, { likes: num(p.likes) + 1 }); refresh();
+  }
+};
+
+/* ============================== 16. BOOT =============================== */
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; });
+
+document.addEventListener('click', (e) => {
+  /* Theme toggle: switches instantly, no re-render */
+  const themeEl = e.target.closest('[data-theme-toggle]');
+  if (themeEl) { e.preventDefault(); setTheme(!isDark()); return; }
+  const el = e.target.closest('[data-action]');
+  if (!el) return;
+  const fn = ACTIONS[el.dataset.action];
+  if (fn) { if (el.tagName !== 'A') e.preventDefault(); fn(el); }
+});
+document.addEventListener('submit', (e) => {
+  const form = e.target.closest('form[data-form]');
+  if (!form) return;
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form).entries());
+  const fn = FORMS[form.dataset.form];
+  if (fn) fn(data, form);
+});
+window.addEventListener('hashchange', render);
+
+initTheme();
+render();
+</script>
+</body>
+</html>
