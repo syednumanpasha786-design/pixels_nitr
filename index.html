@@ -65,7 +65,7 @@ body.theme-dark{
 *{margin:0;padding:0;box-sizing:border-box}
 body,button{font-family:'EB Garamond',Georgia,serif;font-weight:600;letter-spacing:.01em}
 body{overflow-x:hidden;background:var(--px-cream);color:var(--px-text);transition:background .25s,color .25s}
-html{font-size:17px}
+html{font-size:17px;scroll-padding-top:88px}
 h1,h2,h3,h4,h5{font-family:'EB Garamond',ui-serif,Georgia,serif;text-shadow:var(--px-title-3d)}
 button{line-height:1.2;cursor:pointer}
 button:focus-visible{outline:2px solid var(--px-text);outline-offset:4px}
@@ -118,7 +118,7 @@ body.theme-dark .theme-toggle .icon-sun{display:none}
 .phase-text{position:absolute;bottom:55px;left:50%;transform:translateX(-50%);width:90%;font-size:1rem;color:var(--px-text-soft);letter-spacing:.03em;text-transform:uppercase;text-align:center;z-index:20;opacity:0}
 .progress-container{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:180px;height:2px;background:var(--px-surface);overflow:hidden;z-index:20}
 .progress-fill{height:100%;width:0%;background:var(--px-gold)}
-.hero-stage{position:fixed;inset:0;z-index:100;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,430px);grid-template-rows:auto auto;grid-template-areas:"content video" "campaign video";align-content:safe center;justify-content:center;column-gap:clamp(32px,5vw,72px);row-gap:32px;padding:88px clamp(24px,6vw,80px) 48px;overflow-y:auto;overflow-x:hidden;background:var(--px-cream);opacity:0;pointer-events:none}
+.hero-stage{position:fixed;inset:0;z-index:100;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,430px);grid-template-rows:auto auto auto;grid-template-areas:"content video" "campaign video" "credit credit";align-content:safe center;justify-content:center;column-gap:clamp(32px,5vw,72px);row-gap:32px;padding:88px clamp(24px,6vw,80px) 48px;overflow-y:auto;overflow-x:hidden;background:var(--px-cream);opacity:0;pointer-events:none}
 .hero-content{grid-area:content;display:flex;flex-direction:column;align-items:center;max-width:680px;justify-self:center;width:100%;text-align:center}
 .hero-title{font-size:clamp(3rem,5.8vw,5rem);color:var(--px-text);margin-bottom:12px;opacity:0;line-height:1.1;text-shadow:var(--px-title-3d)}
 .hero-tagline{font-style:italic;font-size:1.6rem;color:var(--px-gold-dark);margin-bottom:26px;opacity:0;line-height:1.35}
@@ -167,6 +167,22 @@ body.theme-dark .theme-toggle .icon-sun{display:none}
   .phase-text{font-size:.95rem;bottom:calc(48px + env(safe-area-inset-bottom));line-height:1.35}
   .hero-stage{height:100%;height:100dvh}
 }
+/* Credit badge — very last block of the intro hero stage, centred */
+.hero-credit{grid-area:credit;justify-self:center;align-self:end;width:100%;max-width:520px;text-align:center;opacity:0;padding:18px 22px;background:var(--px-surface);border:1px solid var(--px-gold);border-radius:16px}
+.hero-credit-name{font-size:1.15rem;color:var(--px-text)}
+.hero-credit-btn{margin-top:12px;display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:100px;border:1px solid var(--px-gold);background:var(--px-gold-light);color:var(--px-navy);font-size:1rem;font-weight:600;text-decoration:none}
+.hero-credit-btn:hover{filter:brightness(1.06)}
+
+/* Dark theme only: both logos sit on a white curved frame */
+body.theme-dark .logo-chip{background:#fff;border:1px solid rgba(197,160,89,.35);border-radius:14px;padding:6px 10px;box-shadow:0 8px 22px rgba(0,0,0,.45)}
+body.theme-dark .logo-circle,body.theme-dark .showcase-logo-circle{background:#fff}
+
+/* The landing cards keep their light artwork in both themes, so their text
+   stays dark and readable inside the card in the dark theme as well. */
+body.theme-dark .edition-card h3,
+body.theme-dark .edition-card p,
+body.theme-dark .edition-card .card-eyebrow{color:#1c1c1c;font-weight:600}
+
 @media (prefers-reduced-motion: reduce){.marquee-track,.float-soft{animation:none}}
 </style>
 </head>
@@ -213,6 +229,13 @@ body.theme-dark .theme-toggle .icon-sun{display:none}
 
    Then set:  const adapter = SupabaseAdapter;      // (or FirestoreAdapter)
 
+   Small device-level values (the hero like counter, local flags) go through the
+   two-method `KV` store — swapped just as easily:
+       const SupabaseKV = {
+         async get(k, f) { const { data } = await supabase.from('meta').select('value').eq('key', k).maybeSingle(); return data ? data.value : f; },
+         async set(k, v) { await supabase.from('meta').upsert({ key: k, value: v }); return v; }
+       };
+
    File uploads go through `uploader` — swap it for Firebase/Supabase Storage:
        const SupabaseStorage = {
          async upload(file) {
@@ -239,6 +262,7 @@ const A = {
   leaderboard:'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/ca5daebd1_image.png',
   lock:      'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/52b0a02c5_image.png',
   howCard:   'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/c1c5445a0_image.png',
+  editionCard:'https://media.base44.com/images/public/6ac190b2672265dcfbb64804/7f6772fcd_WhatsAppImage2026-10-05at105001AM.jpeg',
   hackathon: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80',
   memories:  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80',
   live:      'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=900&q=80',
@@ -249,9 +273,8 @@ const LINKEDIN = 'https://www.linkedin.com/in/syed-numan-pasha-114b212bb?utm_sou
 const EVENT_QUOTA = '35+';
 const TOTAL_POINTS = 1200;
 const APP_URL = 'pixels-event-flow.base44.app';
-/* Set this to the PIXELS 2k26 .apk link once the Android build is ready — the
-   install button then downloads the app instead of using the browser prompt. */
-const APK_URL = '';
+/* The Install-the-app button downloads this Android build directly. */
+const APK_URL = 'https://bucket.appilix.com/app-apk-09df797b76d8419b9774cb437c108b28-1791150898.apk';
 
 /* ========================= 2. DATABASE ADAPTER ============================ */
 const KEYS = { db: 'pixel2k26_db', admin: 'pixel2k26_admin', captain: 'pixel2k26_captain', student: 'pixel2k26_student', theme: 'pixels2k26_theme', intro: 'pixels2k26_intro_entered' };
@@ -282,6 +305,19 @@ const LocalAdapter = {
 
 /* Swap this single line to move the whole app onto Firebase/Supabase. */
 const adapter = LocalAdapter;
+
+/* Small device-level values (the hero like counter, local flags). Two methods
+   only, so it can be pointed at Firebase/Supabase exactly like `adapter`. */
+const KV = {
+  async get(key, fallback) {
+    try { const raw = localStorage.getItem(key); return raw === null ? fallback : JSON.parse(raw); }
+    catch (e) { return fallback; }
+  },
+  async set(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+    return value;
+  }
+};
 
 const DB = {
   list: (c) => adapter.list(c),
@@ -444,9 +480,9 @@ function nav() {
   return '<header class="fixed inset-x-0 top-0 z-40 border-b border-softline bg-ivory/90 backdrop-blur-xl">' +
     '<div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 lg:h-20 lg:px-8">' +
       '<a href="#/" class="flex items-center gap-2.5">' +
-        '<img src="' + A.college + '" alt="Navodaya Institute of Technology" class="h-9 w-auto sm:h-10" />' +
+        '<img src="' + A.college + '" alt="Navodaya Institute of Technology" class="logo-chip h-9 w-auto sm:h-10" />' +
         '<span class="hidden h-8 w-px bg-softline sm:block"></span>' +
-        '<img src="' + A.logo + '" alt="PIXELS 2k26" class="h-10 w-auto sm:h-12" />' +
+        '<img src="' + A.logo + '" alt="PIXELS 2k26" class="logo-chip h-10 w-auto sm:h-12" />' +
       '</a>' +
       '<nav class="hidden items-center gap-0.5 lg:flex">' +
         EXTRA_LINKS.map(l => '<a href="#' + l[0] + '" class="rounded-full px-3 py-2 text-[13.5px] font-semibold ' +
@@ -482,7 +518,7 @@ const TAB_ICON = {
 };
 const NAV_TABS = [
   ['/', 'Home'], ['/dashboard', 'Dashboard'], ['/events', 'Events'], ['/teams', 'Teams'],
-  ['/gallery', 'Memories'], ['/feed', 'Feed'], ['/announcements', 'Notices'], ['/journey', 'Journey'],
+  ['/gallery', 'Memories'], ['/feed', 'Feed'], ['/announcements', 'Notices'], ['/journey', 'My Journey'],
   ['/admin', 'Admin'], ['/captain', 'Captain']
 ];
 /* Mobile bottom bar — every page, outlined icon + label, scrolls sideways */
@@ -497,7 +533,7 @@ function tabbar() {
 }
 function footer() {
   const c = config();
-  return '<footer class="relative overflow-hidden bg-panel pb-[calc(5rem+env(safe-area-inset-bottom))] pt-16 text-onpanel lg:pb-0">' +
+  return '<footer class="relative overflow-hidden bg-panel pb-[calc(6rem+env(safe-area-inset-bottom))] pt-16 text-onpanel lg:pb-0">' +
     '<div class="mx-auto grid max-w-6xl gap-12 px-5 pb-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">' +
       '<div class="sm:col-span-2">' +
         '<p class="max-w-md text-[16px] leading-relaxed text-onpanel/70">PIXELS 2k26 — the intra-college fest of ' + esc(c.college_name || 'Navodaya Institute of Technology') + ', ' + esc(c.location || 'Raichur, Karnataka') + '. ' + EVENT_QUOTA + ' events, 4 teams, one month of pure energy.</p>' +
@@ -547,13 +583,13 @@ function landing() {
   const c = config();
   const pts = pointsPossible() || TOTAL_POINTS;
   return nav() +
-  '<main class="pb-32 pt-16 lg:pb-0 lg:pt-20">' +
+  '<main class="pb-44 pt-20 lg:pb-0 lg:pt-20">' +
     /* hero */
     '<section class="relative overflow-hidden pb-10 pt-10 lg:pb-14 lg:pt-16">' +
       '<div class="mx-auto grid max-w-7xl items-center gap-10 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:px-8">' +
         '<div class="text-center lg:text-left">' +
           '<div class="inline-flex items-center gap-3 rounded-full border border-gold/35 bg-white/70 px-4 py-2">' +
-            '<img src="' + A.college + '" class="h-6 w-auto" alt="" /><span class="text-[12px] font-bold uppercase text-navy/75">' + esc(c.college_name || 'Navodaya Institute of Technology') + ' · ' + esc(c.location || 'Raichur, Karnataka') + '</span>' +
+            '<img src="' + A.college + '" class="logo-chip h-6 w-auto" alt="" /><span class="text-[12px] font-bold uppercase text-navy/75">' + esc(c.college_name || 'Navodaya Institute of Technology') + ' · ' + esc(c.location || 'Raichur, Karnataka') + '</span>' +
           '</div>' +
           '<h1 class="mt-7 text-[3.6rem] font-black leading-[0.95] text-navy sm:text-[5rem] lg:text-[6rem]">PIXEL<br /><span class="gold-text">2k26</span></h1>' +
           '<p class="mx-auto mt-4 max-w-xl text-xl font-semibold text-navy/85 sm:text-2xl lg:mx-0">' + esc(c.tagline || 'Where every pixel becomes a memory') + '</p>' +
@@ -573,17 +609,24 @@ function landing() {
           '</div>' +
         '</div>' +
         '<div class="flex justify-center">' +
-          /* wider + shorter frame, contain-fit: nothing is cropped from the video */
-          '<div class="w-full max-w-[400px] overflow-hidden rounded-2xl border border-gold/30 bg-black shadow-2xl sm:max-w-[450px] lg:max-w-[480px]">' +
-            '<video class="aspect-[4/5] w-full object-contain" src="' + A.heroVideo + '" autoplay muted loop playsinline preload="auto"></video>' +
+          /* narrower frame matching the video's own 9:16 shape — no black bars at the sides */
+          '<div class="w-full max-w-[300px] overflow-hidden rounded-2xl border border-gold/30 bg-black shadow-2xl sm:max-w-[330px] lg:max-w-[350px]">' +
+            '<video class="aspect-[9/16] w-full object-contain" src="' + A.heroVideo + '" autoplay muted loop playsinline preload="auto"></video>' +
           '</div>' +
         '</div>' +
       '</div>' +
       '<div class="mt-8 hidden justify-center lg:mt-10 lg:flex"><a href="#film" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold" aria-label="Scroll down">↓</a></div>' +
     '</section>' +
+    /* mobile only: small centred badge between the hero video and the film */
+    '<div class="mx-auto mt-6 flex justify-center px-5 lg:hidden">' +
+      '<div class="inline-flex items-center gap-2.5 rounded-full border border-gold/40 bg-white/70 px-5 py-2.5">' +
+        '<span class="h-2 w-2 rounded-full bg-gold"></span>' +
+        '<span class="text-[12.5px] font-bold uppercase text-navy/85">PIXELS 2k26 NITR</span>' +
+      '</div>' +
+    '</div>' +
     /* curved framed film, clear of the screen edges */
     '<section id="film" class="w-full px-4 py-8 sm:px-6 lg:px-8 lg:py-10">' +
-      '<div class="mx-auto max-w-7xl overflow-hidden rounded-[1.6rem] border border-gold/25 bg-black shadow-2xl sm:rounded-[2rem]">' +
+      '<div class="mx-auto max-w-7xl overflow-hidden rounded-[1.6rem] shadow-2xl sm:rounded-[2rem]">' +
         '<video class="h-auto w-full object-cover" src="' + A.filmVideo + '" autoplay muted loop playsinline preload="auto"></video>' +
       '</div>' +
     '</section>' +
@@ -600,7 +643,7 @@ function landing() {
     '<section class="mx-auto max-w-7xl px-5 pb-20 lg:px-8 lg:pb-28">' +
       '<div class="mx-auto max-w-3xl text-center">' + section('The Edition','Four teams. ' + EVENT_QUOTA + ' arenas. One trophy.','Achilles, Hercules, Orpheus and Atlas go head to head across every arena of PIXELS 2k26 — and the platform tracks every single point.') + '</div>' +
       '<div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">' +
-        FEATURES.map(f => '<article class="rounded-[1.6rem] border border-gold/30 bg-cover bg-center p-3 shadow-lg transition hover:-translate-y-1" style="background-image:url(\'' + A.cream + '\')">' +
+        FEATURES.map(f => '<article class="edition-card rounded-[1.6rem] border border-gold/30 bg-cover bg-center p-3 shadow-lg transition hover:-translate-y-1" style="background-image:url(\'' + A.editionCard + '\')">' +
           '<div class="relative overflow-hidden rounded-[1.2rem]"><img src="' + f[2] + '" alt="" class="h-40 w-full object-cover" />' +
             (f[3] ? '<span class="absolute left-3 top-3 rounded-full bg-red-600 px-3 py-1 text-[11px] font-bold uppercase text-white">' + f[3] + '</span>' : '') + '</div>' +
           '<div class="px-3 pb-3 pt-5"><h3 class="text-[17px] font-bold text-navy">' + esc(f[0]) + '</h3><p class="mt-2 text-[14px] leading-relaxed text-navy/70">' + esc(f[1]) + '</p></div>' +
@@ -616,9 +659,9 @@ function landing() {
         '<p class="mt-5 text-[16px] leading-relaxed text-mutedink sm:text-lg">The complete PIXELS 2k26 journey — built for students, captains and the president alike.</p></div>' +
       '</div>' +
       '<div class="mt-14 overflow-hidden"><div class="marquee-track flex w-max gap-6 px-5 lg:px-8">' +
-        STEPS.concat(STEPS).map(s => '<article class="w-[80vw] shrink-0 rounded-[1.6rem] border border-gold/25 p-3 shadow-xl sm:w-[350px]" style="background-image:url(\'' + A.howCard + '\');background-size:cover;background-position:center">' +
+        STEPS.concat(STEPS).map(s => '<article class="edition-card w-[80vw] shrink-0 rounded-[1.6rem] border border-gold/25 p-3 shadow-xl sm:w-[350px]" style="background-image:url(\'' + A.howCard + '\');background-size:cover;background-position:center">' +
           '<img src="' + s[3] + '" alt="" class="h-40 w-full rounded-[1.2rem] object-cover" />' +
-          '<div class="px-3 pb-4 pt-5"><span class="text-[12px] font-bold uppercase text-gold">' + s[0] + '</span>' +
+          '<div class="px-3 pb-4 pt-5"><span class="card-eyebrow text-[12px] font-bold uppercase text-gold">' + s[0] + '</span>' +
           '<h3 class="mt-2.5 text-[19px] font-bold text-navy">' + esc(s[1]) + '</h3><p class="mt-2 text-[14px] leading-relaxed text-navy/75">' + esc(s[2]) + '</p></div></article>').join('') +
       '</div></div>' +
       '<div class="mx-auto mt-12 flex max-w-7xl justify-center px-5 lg:px-8"><a href="#/dashboard" class="' + BTN.dark + '">Try it now — open the dashboard</a></div>' +
@@ -653,26 +696,17 @@ function campaignBlock() {
   '</div></section>';
 }
 
-function installSteps() {
-  return [
-    'Open ' + APP_URL + ' in Chrome on your Android phone.',
-    'Tap the ⋮ menu, then choose “Install app” or “Add to Home screen”.',
-    'PIXELS 2k26 lands on your home screen — open it like any other app.'
-  ];
-}
 function installBlock() {
-  const steps = installSteps();
-  const label = APK_URL ? 'Download the app (.apk)' : 'Install the app';
   return '<section id="install" class="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20"><div class="overflow-hidden rounded-[2rem] border border-gold/30 bg-panel px-6 py-10 sm:px-10 sm:py-12">' +
-    '<div class="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]"><div>' +
+    '<div class="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]"><div>' +
       '<span class="inline-flex rounded-full border border-goldsoft/50 px-4 py-1.5 text-[12px] font-bold uppercase text-goldsoft">Android app</span>' +
       '<h2 class="mt-5 text-3xl font-black text-onpanel sm:text-4xl">Install PIXELS 2k26 on your phone.</h2>' +
-      '<p class="mt-4 max-w-lg text-[16px] leading-relaxed text-onpanel/75">Live scores, schedules and your own PIXEL journey in one tap — installed straight from the browser.</p>' +
-      '<button type="button" data-action="install" class="mt-8 ' + BTN.gold + '">⭳ ' + label + '</button>' +
-    '</div><ol class="space-y-4">' +
-      steps.map((s, i) => '<li class="flex items-start gap-4 rounded-2xl border border-onpanel/15 bg-onpanel/5 px-5 py-4"><span class="num mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold text-[13px] font-bold text-panel">' + (i + 1) + '</span><p class="text-[15px] text-onpanel/80">' + s + '</p></li>').join('') +
-      '<li class="flex items-center gap-3 px-2"><img src="' + A.logo + '" alt="" class="h-10 w-auto" /><span class="text-[12px] font-semibold uppercase text-onpanel/50">Works offline-friendly on Android</span></li>' +
-    '</ol></div></div></section>';
+      '<p class="mt-4 max-w-lg text-[16px] leading-relaxed text-onpanel/75">Live scores, schedules, notices and your own PIXEL journey in one tap. Download the PIXELS 2k26 Android app and keep the whole fest in your pocket.</p>' +
+      '<a href="' + APK_URL + '" download target="_blank" rel="noreferrer" class="mt-8 ' + BTN.gold + '">⭳ Download the Android app</a>' +
+      '<p class="mt-4 text-[13px] text-onpanel/55">Android only — install it once and open it like any other app.</p>' +
+    '</div>' +
+    '<div class="flex justify-center"><img src="' + A.logo + '" alt="PIXELS 2k26" class="logo-chip h-28 w-auto sm:h-32" /></div>' +
+    '</div></div></section>';
 }
 
 /* ============================= 7. DASHBOARD ============================= */
@@ -837,7 +871,7 @@ function events() {
 }
 function eventDetail(id) {
   const e = state.data.events.find(x => x.id === id);
-  if (!e) return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-3xl px-5">' + empty('Event not found','This event may have been removed by the president.') + '</div></main>' + tabbar();
+  if (!e) return nav() + '<main class="pb-44 pt-24"><div class="mx-auto max-w-3xl px-5">' + empty('Event not found','This event may have been removed by the president.') + '</div></main>' + tabbar();
   const rows = [
     ['Category', e.category], ['Points', num(e.points) + ' pts'], ['Schedule', e.schedule], ['Venue', e.venue],
     ['Student coordinators', e.student_coordinators], ['Faculty coordinators', e.faculty_coordinators],
@@ -869,7 +903,7 @@ function teams() {
 }
 function teamDetail(id) {
   const t = state.data.teams.find(x => x.id === id);
-  if (!t) return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-3xl px-5">' + empty('Team not found','This team may have been removed by the president.') + '</div></main>' + tabbar();
+  if (!t) return nav() + '<main class="pb-44 pt-24"><div class="mx-auto max-w-3xl px-5">' + empty('Team not found','This team may have been removed by the president.') + '</div></main>' + tabbar();
   const roster = state.data.members.filter(m => m.team === t.name);
   const res = state.data.results.filter(r => [r.first_team, r.second_team, r.third_team].some(x => norm(x) === norm(t.name)));
   return nav() + header('Team', t.name, t.motto || '', '<a href="#/dashboard" class="' + BTN.ghost + '">Back to dashboard</a>') +
@@ -935,15 +969,14 @@ function announcements() {
 
 /* ============================== 10. ADMIN ============================== */
 function adminGate() {
-  return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-md px-5">' +
+  return nav() + '<main class="pb-44 pt-24"><div class="mx-auto max-w-md px-5">' +
     '<div class="rounded-[2rem] border border-gold/30 bg-white/80 p-8 text-center">' +
-      '<img src="' + A.logo + '" alt="PIXELS 2k26" class="mx-auto h-16 w-auto" />' +
+      '<img src="' + A.logo + '" alt="PIXELS 2k26" class="logo-chip mx-auto h-16 w-auto" />' +
       '<h1 class="mt-6 text-2xl font-black text-navy">President / Admin panel</h1>' +
       '<p class="mt-2 text-[15px] text-mutedink">Enter the president password to open the control room.</p>' +
       '<form data-form="adminLogin" class="mt-6"><input name="password" type="password" placeholder="Admin password" class="h-11 w-full rounded-md border border-softline bg-white px-3 text-center text-[15px] text-navy" required />' +
       '<button class="mt-4 w-full rounded-full bg-gradient-to-r from-gold to-goldsoft py-3.5 text-[15px] font-semibold text-panel" type="submit">Unlock the panel</button>' +
       (state.flash ? '<p class="mt-3 text-[15px] font-semibold text-red-600">' + esc(state.flash) + '</p>' : '') + '</form>' +
-      '<p class="mt-5 text-[13px] text-mutedink">Default password: <span class="font-semibold">revan2k26</span> — change it in Settings.</p>' +
     '</div></div></main>' + tabbar();
 }
 const ADMIN_TABS = [['teams','Teams'],['members','Members'],['events','Categories & events'],['results','Results'],['registrations','Registrations'],['content','Notice board & album'],['settings','Settings']];
@@ -1116,8 +1149,8 @@ function adminSettings() {
 /* ============================= 11. CAPTAIN ============================= */
 function captainGate() {
   const d = state.data;
-  return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-md px-5"><div class="rounded-[2rem] border border-gold/30 bg-white/80 p-8 text-center">' +
-    '<img src="' + A.logo + '" alt="PIXELS 2k26" class="mx-auto h-16 w-auto" />' +
+  return nav() + '<main class="pb-44 pt-24"><div class="mx-auto max-w-md px-5"><div class="rounded-[2rem] border border-gold/30 bg-white/80 p-8 text-center">' +
+    '<img src="' + A.logo + '" alt="PIXELS 2k26" class="logo-chip mx-auto h-16 w-auto" />' +
     '<h1 class="mt-6 text-2xl font-black text-navy">Team captain panel</h1>' +
     '<p class="mt-2 text-[15px] text-mutedink">Enter the unique team password issued by the president to open your team panel.</p>' +
     '<form data-form="captainLogin" class="mt-6"><input name="password" type="password" placeholder="Team password" class="h-11 w-full rounded-md border border-softline bg-white px-3 text-center text-[15px] text-navy" required />' +
@@ -1234,6 +1267,8 @@ function introView() {
         '<button id="like-btn" class="like-btn" type="button" aria-label="Like"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span id="like-count">0</span></button>' +
       '</div>' +
       '<div id="campaign-footnote" class="campaign-footnote">Make <strong>PIXELS 2k26</strong> the grandest edition yet — <span class="vote">vote <strong>Revan Siddheshwar</strong> for President</span> and carry every team to the best memories of the year.</div>' +
+      '<div id="hero-credit" class="hero-credit"><p class="hero-credit-name">Crafted by Syed Numan Pasha</p>' +
+        '<a class="hero-credit-btn" href="' + LINKEDIN + '" target="_blank" rel="noreferrer">in · Connect via LinkedIn</a></div>' +
     '</div>' +
   '</div>';
 }
@@ -1264,8 +1299,8 @@ function initIntro() {
   const TextPlugin = window.TextPlugin;
 
   /* Likes (swap in a real database later — the helpers are already async) */
-  const getLikes = async () => { try { return parseInt(localStorage.getItem(LIKE_KEY) || '0', 10) || 0; } catch (e) { return 0; } };
-  const addLike = async () => { const n = (await getLikes()) + 1; try { localStorage.setItem(LIKE_KEY, String(n)); } catch (e) {} return n; };
+  const getLikes = async () => Number(await KV.get(LIKE_KEY, 0)) || 0;
+  const addLike = async () => KV.set(LIKE_KEY, (await getLikes()) + 1);
   getLikes().then(n => { likeCount.textContent = n; });
   const onLike = () => { addLike().then(n => { likeCount.textContent = n; likeBtn.classList.add('liked'); }); };
   likeBtn.addEventListener('click', onLike);
@@ -1311,7 +1346,7 @@ function initIntro() {
     skipBtn.style.display = 'none';
     heroStage.style.opacity = '1';
     heroStage.style.pointerEvents = 'auto';
-    ['.hero-title', '.hero-tagline', '.hero-badge', '.hero-video-card'].forEach(sel => { const el = document.querySelector(sel); if (el) el.style.opacity = '1'; });
+    ['.hero-title', '.hero-tagline', '.hero-badge', '.hero-video-card', '.hero-credit'].forEach(sel => { const el = document.querySelector(sel); if (el) el.style.opacity = '1'; });
     typingText.textContent = INTRO_TYPE_TEXT; typingText.style.opacity = '1';
     campaignFootnote.style.opacity = '1';
   };
@@ -1419,8 +1454,9 @@ function initIntro() {
   tl.to('.hero-badge', { opacity: 1, duration: .5, ease: 'power2.out' }, T + 29);
   tl.to('#enter-btn', { opacity: 1, duration: .5, ease: 'back.out(1.4)' }, T + 29.5);
   tl.to('.hero-video-card', { opacity: 1, duration: .6, ease: 'power2.out' }, T + 26.5);
-  tl.call(() => { introScreen.scrollTop = 0; playVisibleVideo(); }, null, T + 27.1);
+  tl.call(() => { introScreen.scrollTop = 0; playVisibleVideo(); startWithAudio(); }, null, T + 27.1);
   tl.to(campaignFootnote, { opacity: 1, duration: .6, ease: 'power2.out' }, T + 30.1);
+  tl.to('#hero-credit', { opacity: 1, duration: .6, ease: 'power2.out' }, T + 30.4);
 
   /* Ambient loops */
   ambient.push(gsap.to('#enter-btn', { y: -6, duration: 1.5, repeat: -1, yoyo: true, ease: 'sine.inOut' }));
@@ -1453,7 +1489,18 @@ function initIntro() {
     heroVideo.muted = false;
     heroVideo.play().catch(() => { heroVideo.muted = true; playVisibleVideo(); });
   };
-  const onLoaded = () => playVisibleVideo();
+  /* Real audio: try unmuted playback straight away (allowed on most phones);
+     if the browser blocks it we keep the muted autoplay running and unmute on
+     the very first tap / click / key the student makes anywhere on the page. */
+  const startWithAudio = () => {
+    if (soundEnabled) return;
+    heroVideo.volume = 1;
+    heroVideo.muted = false;
+    const playing = heroVideo.play();
+    if (playing && playing.then) playing.then(() => { soundEnabled = true; }).catch(() => { heroVideo.muted = true; playVisibleVideo(); });
+    else soundEnabled = true;
+  };
+  const onLoaded = () => { playVisibleVideo(); startWithAudio(); };
   heroVideo.addEventListener('loadeddata', onLoaded);
   heroVideo.addEventListener('canplay', onLoaded);
   const observer = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) playVisibleVideo(); }, { threshold: 0.05 });
@@ -1530,7 +1577,7 @@ function view() {
     case 'announcements': return announcements();
     case 'admin': return admin();
     case 'captain': return captain();
-    default: return nav() + '<main class="pb-32 pt-24"><div class="mx-auto max-w-3xl px-5">' + empty('Page not found','That page does not exist in PIXELS 2k26 — use the menu to find your way.') + '</div></main>' + tabbar();
+    default: return nav() + '<main class="pb-44 pt-24"><div class="mx-auto max-w-3xl px-5">' + empty('Page not found','That page does not exist in PIXELS 2k26 — use the menu to find your way.') + '</div></main>' + tabbar();
   }
 }
 async function render() {
