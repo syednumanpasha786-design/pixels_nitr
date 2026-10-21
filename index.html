@@ -201,6 +201,13 @@ body.theme-dark .hero-text .hero-ghost{background:rgba(0,0,0,.45)}
 .lg-only{display:none!important}
 @media (min-width:1024px){.lg-only{display:flex!important}.mobile-only{display:none!important}}
 
+/* Landing hero heading on phones/tablets: PIXELS / NITR (desktop keeps PIXEL / 2k26) */
+.m-inline{display:inline}.d-inline{display:none}
+@media (min-width:1024px){.m-inline{display:none}.d-inline{display:inline}}
+.hero-text .nitr-text{background:linear-gradient(110deg,#C99A4B 0%,#EBCB86 22%,#FFF4D6 38%,#F6DFA4 48%,#D9AE62 62%,#F3D99B 80%,#C9984A 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 0 1px rgba(0,0,0,.45)) drop-shadow(0 2px 6px rgba(255,236,190,.55));animation:nitr-shine 4.5s ease-in-out infinite}
+@keyframes nitr-shine{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media (prefers-reduced-motion: reduce){.hero-text .nitr-text{animation:none}}
+
 /* Android app section: the logo on its white curved frame in both themes */
 .logo-frame{background:#fff;border:1px solid rgba(197,160,89,.35);border-radius:14px;padding:6px 10px;box-shadow:0 8px 22px rgba(0,0,0,.45)}
 
@@ -366,7 +373,7 @@ const EVENT_QUOTA = '35+';
 const TOTAL_POINTS = 1200;
 const APP_URL = 'pixels-event-flow.base44.app';
 /* The Install-the-app button downloads this Android build directly. */
-const APK_URL = 'https://bucket.appilix.com/app-apk-09df797b76d8419b9774cb437c108b28-1791150898.apk';
+const APK_URL = '/PIXELS-2k26.apk'; /* the app file sits next to this page in the GitHub repo (served by Vercel) */
 
 /* ========================= 2. LIVE DATABASE ============================== */
 /* Firebase (all text data, live updates, logins) + Supabase (all files).
@@ -1059,7 +1066,7 @@ function landing() {
           '<div class="inline-flex items-center gap-3 rounded-full border border-gold/35 bg-white/70 px-4 py-2">' +
             '<img src="' + A.college + '" class="logo-chip h-6 w-auto" alt="" /><span class="text-[12px] font-bold uppercase text-navy/75">' + esc(c.college_name || 'Navodaya Institute of Technology') + ' · ' + esc(c.location || 'Raichur, Karnataka') + '</span>' +
           '</div>' +
-          '<h1 class="mt-7 text-[3.6rem] font-black leading-[0.95] text-navy sm:text-[5rem] lg:text-[6rem]">PIXEL<br /><span class="gold-text">2k26</span></h1>' +
+          '<h1 class="mt-7 text-[3.6rem] font-black leading-[0.95] text-navy sm:text-[5rem] lg:text-[6rem]">PIXEL<span class="m-inline">S</span><br /><span class="gold-text d-inline">2k26</span><span class="nitr-text m-inline">NITR</span></h1>' +
           '<p class="hero-tag mx-auto mt-4 max-w-xl text-xl font-semibold text-navy/85 sm:text-2xl lg:mx-0">' + esc(c.tagline || 'Where every pixel becomes a memory') + '</p>' +
           '<p class="hero-intro mx-auto mt-6 max-w-xl text-[16px] leading-relaxed text-mutedink sm:text-[17px] lg:mx-0">' + esc(c.intro || '') + '</p>' +
           '<div class="mt-10 flex flex-col items-center gap-6 lg:items-start">' +
@@ -2567,6 +2574,9 @@ window.addEventListener('hashchange', () => render());
 
 initTheme();
 DB.watch(liveRefresh);
+window.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && (e.code === 'KeyU' || String(e.key).toLowerCase() === 'u')) { e.preventDefault(); e.stopPropagation(); }
+}, true);
 Live.init();
 render();
 showLiveStatus();
