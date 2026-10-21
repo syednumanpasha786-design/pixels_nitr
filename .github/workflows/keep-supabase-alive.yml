@@ -1,0 +1,28 @@
+# PIXELS 2k26 — keeps the free Supabase project awake (pings it twice a day).
+# Put this file in your PIXELS GitHub repository (the one Vercel deploys) at:
+#     .github/workflows/keep-supabase-alive.yml
+# The URL and key below are the same public ones already used by pixelevent.html.
+name: Keep Supabase awake
+
+on:
+  schedule:
+    - cron: "23 1 * * *"    # every day 06:53 IST
+    - cron: "23 13 * * *"   # every day 18:53 IST
+  workflow_dispatch:         # adds a "Run workflow" button for testing
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping Supabase
+        env:
+          SUPABASE_URL: https://rbfaatzoonofkltstvdf.supabase.co
+          SUPABASE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJiZmFhdHpvb25vZmtsdHN0dmRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1MTY0ODAsImV4cCI6MjEwODA5MjQ4MH0.qMRK555kj77hL53KLvCgzIwqZCQRTb44znmKJKu3Q_c
+        run: |
+          code=$(curl -s -o out.txt -w "%{http_code}" \
+            "$SUPABASE_URL/rest/v1/keepalive?select=id" \
+            -H "apikey: $SUPABASE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_KEY")
+          echo "HTTP $code"; cat out.txt; echo
+          test "$code" = "200"
